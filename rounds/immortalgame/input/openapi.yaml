@@ -1,0 +1,28 @@
+---
+openapi: 3.0.3
+info:
+  title: Merlin Hunt - The Immortal Game
+  version: 1.0.0-SNAPSHOT
+servers:
+  - url: http://immportal.hunt.knuddeltier.website/
+paths:
+  /immortal/{code}:
+    get:
+      tags:
+      - Immortal Rest Service
+      description: Prüft einen Authentifizierungscode und gibt bei Erfolg das Lösungswort
+        zurück
+      parameters:
+      - name: code
+        in: path
+        description: Ein sechsstelliger numerischer Authentifizierungscode
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string

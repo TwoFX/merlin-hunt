@@ -6,6 +6,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
+
 import dev.samstevens.totp.code.CodeGenerator;
 import dev.samstevens.totp.code.CodeVerifier;
 import dev.samstevens.totp.code.DefaultCodeGenerator;
@@ -21,7 +24,9 @@ public class ImmortalRestService {
     @Path("/{code}")
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public String verify(@PathParam("code") String code) {
+    @Operation(description = "Prüft einen Authentifizierungscode und gibt bei Erfolg das Lösungswort zurück")
+    public String verify(
+            @Parameter(description = "Ein sechsstelliger numerischer Authentifizierungscode") @PathParam("code") String code) {
         TimeProvider timeProvider = new SystemTimeProvider();
         CodeGenerator codeGenerator = new DefaultCodeGenerator();
         CodeVerifier verifier = new DefaultCodeVerifier(codeGenerator, timeProvider);
@@ -29,7 +34,7 @@ public class ImmortalRestService {
         boolean successful = verifier.isValidCode(SECRET, code);
 
         if (successful) {
-            return "Korrekt! Das Passwort für die nächste Runde lautet 'sdfkgjhweifdefjkeshfuierwfaw'";
+            return "Korrekt! Das Lösungswort lautet 'sdfkgjhweifdefjkeshfuierwfaw'";
         } else {
             return "Leider falsch!";
         }
