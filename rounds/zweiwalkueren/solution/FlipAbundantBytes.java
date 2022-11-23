@@ -3,8 +3,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
-import java.util.List;
 
 public class FlipAbundantBytes {
 
@@ -12,22 +10,18 @@ public class FlipAbundantBytes {
         Path inputPath = Paths.get(args[0]);
         byte[] input = Files.readAllBytes(inputPath);
 
-        List<Integer> sumOfProperDivisors = new ArrayList<>(input.length);
-        for (int i = 0; i < input.length; i++) {
-            sumOfProperDivisors.add(0);
-        }
-        System.out.println("Done.");
+        int[] sumOfProperDivisors = new int[input.length];
 
         for (int i = 1; i < input.length; i++) {
-            if (sumOfProperDivisors.get(i) > i) {
+            if (sumOfProperDivisors[i] > i) {
                 input[i] ^= (byte) 0b11111111;
             }
 
             if (i <= 1000000000) {
                 for (int j = 2 * i; j < input.length; j += i) {
-                    int cur = sumOfProperDivisors.get(j);
+                    int cur = sumOfProperDivisors[j];
                     if (cur <= j) {
-                        sumOfProperDivisors.set(j, cur + i);
+                        sumOfProperDivisors[j] = cur + i;
                     }
                 }
             }
