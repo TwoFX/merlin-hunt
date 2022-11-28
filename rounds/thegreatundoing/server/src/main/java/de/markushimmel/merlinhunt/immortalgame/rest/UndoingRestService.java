@@ -11,6 +11,7 @@ import javax.ws.rs.core.Response.Status;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
 import de.markushimmel.merlinhunt.immortalgame.services.UndoingRestServiceBean;
+import de.markushimmel.merlinhunt.immortalgame.util.UndoingConstants;
 
 @Path("/undoing")
 public class UndoingRestService {
@@ -24,11 +25,13 @@ public class UndoingRestService {
     @APIResponse(responseCode = "200", description = "Congratulations, you solved the puzzle!")
     @APIResponse(responseCode = "400", description = "Your input was malformed or incorrect")
     public String makeAttempt(UndoingRestRequest request) {
-        if (request.getClass() == null || request.getNumbers().size() != 5) {
-            throw new MerlinHuntException(Status.BAD_REQUEST, "Request must contain exactly five numbers!");
+        if (request.getNumbers() == null || request.getNumbers().size() != UndoingConstants.SIZE) {
+            throw new MerlinHuntException(Status.BAD_REQUEST, String.format("Expected %d numbers, got %d.",
+                    UndoingConstants.SIZE, request.getNumbers() == null ? 0 : request.getNumbers().size()));
         }
 
         if (service.checkNumbers(request.getNumbers())) {
+
             return String.format("Correct! The solution code is %s",
                     System.getenv().get("MERLIN_HUNT_UNDOING_SECRET"));
         } else {
