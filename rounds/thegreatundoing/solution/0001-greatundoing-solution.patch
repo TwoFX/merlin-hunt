@@ -1,0 +1,173 @@
+From c89bd8ad2cc6422dd150fbd9ddd39181c7957041 Mon Sep 17 00:00:00 2001
+From: Markus Himmel <markus@himmel-villmar.de>
+Date: Mon, 28 Nov 2022 13:49:45 +0100
+Subject: [PATCH] [greatundoing] solution
+
+---
+ .../arithmetic/ModularArithmetic.java         |  4 +-
+ .../immortalgame/arithmetic/Vector.java       |  4 +
+ .../immortalgame/rest/UndoingRestService.java |  6 ++
+ .../services/UndoingRestServiceBean.java      | 74 +++++++++++++++++++
+ 4 files changed, 86 insertions(+), 2 deletions(-)
+
+diff --git a/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/arithmetic/ModularArithmetic.java b/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/arithmetic/ModularArithmetic.java
+index 2eef1fd..3eba4cd 100644
+--- a/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/arithmetic/ModularArithmetic.java
++++ b/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/arithmetic/ModularArithmetic.java
+@@ -47,7 +47,7 @@ public class ModularArithmetic implements IAdditiveGroup<ModularArithmetic>, IFi
+         // But I think that it's almost correct, my friends Pierre
+         // and Joseph-Louis told me so. Right now, it seems to always
+         // return the number 1... I've disabled the test for now.
+-        return of(ArithmeticUtil.powMod(value, MODULUS - 1, MODULUS));
++        return of(ArithmeticUtil.powMod(value, MODULUS - 2, MODULUS));
+     }
+ 
+     @Override
+@@ -89,7 +89,7 @@ public class ModularArithmetic implements IAdditiveGroup<ModularArithmetic>, IFi
+ 
+     @Override
+     public String toString() {
+-        return value + "m";
++        return value + "";
+     }
+ 
+ }
+diff --git a/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/arithmetic/Vector.java b/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/arithmetic/Vector.java
+index a0ec604..6e1534b 100644
+--- a/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/arithmetic/Vector.java
++++ b/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/arithmetic/Vector.java
+@@ -46,6 +46,10 @@ public class Vector<TScalar extends IAdditiveGroup<TScalar> & IField<TScalar>, T
+         return new Vector<>(values.stream().map(IAdditiveGroup::additiveInverse).toList());
+     }
+ 
++    public T get(int i) {
++        return values.get(i);
++    }
++
+     @Override
+     public int hashCode() {
+         final int prime = 31;
+diff --git a/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/rest/UndoingRestService.java b/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/rest/UndoingRestService.java
+index cad5f00..8294460 100644
+--- a/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/rest/UndoingRestService.java
++++ b/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/rest/UndoingRestService.java
+@@ -2,6 +2,7 @@ package de.markushimmel.merlinhunt.immortalgame.rest;
+ 
+ import javax.inject.Inject;
+ import javax.ws.rs.Consumes;
++import javax.ws.rs.GET;
+ import javax.ws.rs.POST;
+ import javax.ws.rs.Path;
+ import javax.ws.rs.Produces;
+@@ -38,4 +39,9 @@ public class UndoingRestService {
+             throw new MerlinHuntException(Status.BAD_REQUEST, "Those were the wrong numbers");
+         }
+     }
++
++    @GET
++    public String getAnswer() {
++        return service.solve();
++    }
+ }
+diff --git a/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/services/UndoingRestServiceBean.java b/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/services/UndoingRestServiceBean.java
+index 8cd83e6..9681127 100644
+--- a/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/services/UndoingRestServiceBean.java
++++ b/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/services/UndoingRestServiceBean.java
+@@ -1,6 +1,7 @@
+ package de.markushimmel.merlinhunt.immortalgame.services;
+ 
+ import java.util.ArrayList;
++import java.util.Collections;
+ import java.util.List;
+ import java.util.Random;
+ 
+@@ -10,6 +11,7 @@ import de.markushimmel.merlinhunt.immortalgame.arithmetic.IAdditiveGroup;
+ import de.markushimmel.merlinhunt.immortalgame.arithmetic.IField;
+ import de.markushimmel.merlinhunt.immortalgame.arithmetic.IVectorSpace;
+ import de.markushimmel.merlinhunt.immortalgame.arithmetic.ModularArithmetic;
++import de.markushimmel.merlinhunt.immortalgame.arithmetic.Vector;
+ import de.markushimmel.merlinhunt.immortalgame.transformations.IStuffDoer;
+ import de.markushimmel.merlinhunt.immortalgame.transformations.RandomStuffDoer;
+ import de.markushimmel.merlinhunt.immortalgame.transformations.RepeatedStuffDoer;
+@@ -34,6 +36,78 @@ public class UndoingRestServiceBean {
+         return correctAnswer.equals(output);
+     }
+ 
++    public String solve() {
++        List<ModularArithmetic> correctAnswer = generateCorrectAnswer();
++        List<Vector<ModularArithmetic, ModularArithmetic>> input = identityMatrix();
++        List<Vector<ModularArithmetic, ModularArithmetic>> matrix = transform(input, ModularArithmetic.of(0));
++        List<ModularArithmetic> rightHandSide = new ArrayList<>(correctAnswer);
++        solve(matrix, rightHandSide);
++        return rightHandSide.toString();
++    }
++
++    private void solve(
++            List<Vector<ModularArithmetic, ModularArithmetic>> matrix, List<ModularArithmetic> rightHandSide) {
++        for (int j = 0; j < UndoingConstants.SIZE; j++) {
++            int i = findPivot(matrix, j);
++            ModularArithmetic factor = matrix.get(i).get(j).multiplicativeInverse();
++            scaleRow(matrix, i, factor);
++            scaleRow(rightHandSide, i, factor);
++
++            for (int ii = 0; ii < UndoingConstants.SIZE; ii++) {
++                if (i == ii) {
++                    continue;
++                }
++                ModularArithmetic innerFactor = matrix.get(ii).get(j).additiveInverse();
++                rowOperation(matrix, i, ii, innerFactor);
++                rowOperation(rightHandSide, i, ii, innerFactor);
++            }
++
++            swapRows(matrix, i, j);
++            swapRows(rightHandSide, i, j);
++        }
++    }
++
++    private int findPivot(List<Vector<ModularArithmetic, ModularArithmetic>> matrix, int column) {
++        for (int i = column; i < UndoingConstants.SIZE; i++) {
++            if (!matrix.get(i).get(column).equals(ModularArithmetic.of(0))) {
++                return i;
++            }
++        }
++        throw new IllegalStateException("Unable to find pivot");
++    }
++
++    private <TScalar extends IAdditiveGroup<TScalar> & IField<TScalar>, T extends IAdditiveGroup<T> & IVectorSpace<TScalar, T>> void swapRows(
++            List<T> matrix, int i, int j) {
++        Collections.swap(matrix, i, j);
++    }
++
++    private <TScalar extends IAdditiveGroup<TScalar> & IField<TScalar>, T extends IAdditiveGroup<T> & IVectorSpace<TScalar, T>> void scaleRow(
++            List<T> matrix, int row,
++            TScalar factor) {
++        matrix.set(row, matrix.get(row).scalarMultiply(factor));
++    }
++
++    private <TScalar extends IAdditiveGroup<TScalar> & IField<TScalar>, T extends IAdditiveGroup<T> & IVectorSpace<TScalar, T>> void rowOperation(
++            List<T> matrix, int from, int to, TScalar factor) {
++        matrix.set(to, matrix.get(to).add(matrix.get(from).scalarMultiply(factor)));
++    }
++
++    private List<Vector<ModularArithmetic, ModularArithmetic>> identityMatrix() {
++        List<Vector<ModularArithmetic, ModularArithmetic>> result = new ArrayList<>(UndoingConstants.SIZE);
++        for (int i = 0; i < UndoingConstants.SIZE; i++) {
++            result.add(iota(i));
++        }
++        return result;
++    }
++
++    private Vector<ModularArithmetic, ModularArithmetic> iota(int index) {
++        List<ModularArithmetic> values = new ArrayList<>(UndoingConstants.SIZE);
++        for (int i = 0; i < UndoingConstants.SIZE; i++) {
++            values.add(i == index ? ModularArithmetic.of(1) : ModularArithmetic.of(0));
++        }
++        return new Vector<>(values);
++    }
++
+     private List<ModularArithmetic> generateCorrectAnswer() {
+         Random random = new Random(ANSWER_SEED);
+         List<ModularArithmetic> result = new ArrayList<>(UndoingConstants.SIZE);
+-- 
+2.38.1
+
