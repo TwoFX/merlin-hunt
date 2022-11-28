@@ -37,7 +37,11 @@ public class ModularArithmetic implements IAdditiveGroup<ModularArithmetic>, IFi
 
     @Override
     public ModularArithmetic multiplicativeInverse() {
-        throw new UnsupportedOperationException();
+        // Unfortunately, there is a bug in this method :(
+        // But I think that it's almost correct, my friends Pierre
+        // and Joseph-Louis told me so. Right now, it seems to always
+        // return the number 1...
+        return of(ArithmeticUtil.powMod(value, MODULUS - 1, MODULUS));
     }
 
     @Override
