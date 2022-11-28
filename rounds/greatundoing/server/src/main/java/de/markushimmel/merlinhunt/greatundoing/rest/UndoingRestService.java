@@ -2,6 +2,7 @@ package de.markushimmel.merlinhunt.greatundoing.rest;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -40,5 +41,10 @@ public class UndoingRestService {
         } else {
             throw new MerlinHuntException(Status.BAD_REQUEST, "Those were the wrong numbers");
         }
+    }
+
+    @GET
+    public String getAnswer() {
+        return service.solve();
     }
 }

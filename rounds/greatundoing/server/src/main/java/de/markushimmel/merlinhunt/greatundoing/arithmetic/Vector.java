@@ -46,6 +46,10 @@ public class Vector<TScalar extends IAdditiveGroup<TScalar> & IField<TScalar>, T
         return new Vector<>(values.stream().map(IAdditiveGroup::additiveInverse).toList());
     }
 
+    public T get(int i) {
+        return values.get(i);
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
