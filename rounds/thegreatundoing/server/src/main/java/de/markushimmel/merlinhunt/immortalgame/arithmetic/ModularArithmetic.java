@@ -1,5 +1,7 @@
 package de.markushimmel.merlinhunt.immortalgame.arithmetic;
 
+import java.util.Random;
+
 public class ModularArithmetic implements IAdditiveGroup<ModularArithmetic>, IField<ModularArithmetic>,
         IVectorSpace<ModularArithmetic, ModularArithmetic> {
 
@@ -13,6 +15,10 @@ public class ModularArithmetic implements IAdditiveGroup<ModularArithmetic>, IFi
 
     public static ModularArithmetic of(long value) {
         return new ModularArithmetic(value);
+    }
+
+    public static ModularArithmetic random(Random random) {
+        return of(random.nextLong(MODULUS));
     }
 
     @Override
@@ -40,7 +46,7 @@ public class ModularArithmetic implements IAdditiveGroup<ModularArithmetic>, IFi
         // Unfortunately, there is a bug in this method :(
         // But I think that it's almost correct, my friends Pierre
         // and Joseph-Louis told me so. Right now, it seems to always
-        // return the number 1...
+        // return the number 1... I've disabled the test for now.
         return of(ArithmeticUtil.powMod(value, MODULUS - 1, MODULUS));
     }
 

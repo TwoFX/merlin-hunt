@@ -7,5 +7,5 @@ import de.markushimmel.merlinhunt.immortalgame.arithmetic.IField;
 import de.markushimmel.merlinhunt.immortalgame.arithmetic.IVectorSpace;
 
 public interface IStuffDoer<TScalar extends IAdditiveGroup<TScalar> & IField<TScalar>, T extends IAdditiveGroup<T> & IVectorSpace<TScalar, T>> {
-    List<T> doLinearStuff(List<T> input);
+    List<T> doLinearStuff(List<T> input, TScalar anyScalar);
 }

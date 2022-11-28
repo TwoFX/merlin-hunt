@@ -11,15 +11,16 @@ public class StuffDoerRoster<TScalar extends IAdditiveGroup<TScalar> & IField<TS
 
     private final List<IStuffDoer<TScalar, T>> transformations;
 
-    public StuffDoerRoster(List<IStuffDoer<TScalar, T>> transformations) {
-        this.transformations = transformations;
+    @SafeVarargs
+    public StuffDoerRoster(IStuffDoer<TScalar, T>... transformations) {
+        this.transformations = List.of(transformations);
     }
 
     @Override
-    public List<T> doLinearStuff(List<T> input) {
+    public List<T> doLinearStuff(List<T> input, TScalar anyScalar) {
         List<T> result = input;
         for (IStuffDoer<TScalar, T> transformation : transformations) {
-            result = transformation.doLinearStuff(result);
+            result = transformation.doLinearStuff(result, anyScalar);
         }
         return result;
     }

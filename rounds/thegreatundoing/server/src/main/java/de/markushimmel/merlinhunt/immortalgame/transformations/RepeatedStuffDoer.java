@@ -12,16 +12,16 @@ public class RepeatedStuffDoer<TScalar extends IAdditiveGroup<TScalar> & IField<
     private final IStuffDoer<TScalar, T> inner;
     private final int repetitions;
 
-    public RepeatedStuffDoer(IStuffDoer<TScalar, T> inner, int repetitions) {
+    public RepeatedStuffDoer(int repetitions, IStuffDoer<TScalar, T> inner) {
         this.inner = inner;
         this.repetitions = repetitions;
     }
 
     @Override
-    public List<T> doLinearStuff(List<T> input) {
+    public List<T> doLinearStuff(List<T> input, TScalar anyScalar) {
         List<T> result = input;
         for (int i = 0; i < repetitions; i++) {
-            result = inner.doLinearStuff(result);
+            result = inner.doLinearStuff(result, anyScalar);
         }
         return result;
     }
