@@ -24,9 +24,9 @@ public class ImmortalRestService {
     @Path("/{code}")
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    @Operation(description = "Prüft einen Authentifizierungscode und gibt bei Erfolg das Lösungswort zurück")
+    @Operation(description = "Verifies an authentication code and returns the solution code")
     public String verify(
-            @Parameter(description = "Ein sechsstelliger numerischer Authentifizierungscode") @PathParam("code") String code) {
+            @Parameter(description = "A six-digit numeric authentication code") @PathParam("code") String code) {
         TimeProvider timeProvider = new SystemTimeProvider();
         CodeGenerator codeGenerator = new DefaultCodeGenerator();
         CodeVerifier verifier = new DefaultCodeVerifier(codeGenerator, timeProvider);
@@ -34,9 +34,9 @@ public class ImmortalRestService {
         boolean successful = verifier.isValidCode(SECRET, code);
 
         if (successful) {
-            return "Korrekt! Das Lösungswort lautet 'sdfkgjhweifdefjkeshfuierwfaw'";
+            return "Correct! The solution code is 'sdfkgjhweifdefjkeshfuierwfaw'";
         } else {
-            return "Leider falsch!";
+            return "Incorrect!";
         }
     }
 
