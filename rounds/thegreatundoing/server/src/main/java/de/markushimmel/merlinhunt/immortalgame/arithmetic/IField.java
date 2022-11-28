@@ -18,5 +18,5 @@ public interface IField<T extends IAdditiveGroup<T>> {
 
     T multiply(T other);
 
-    T multiplicateInverse();
+    T multiplicativeInverse();
 }

@@ -36,7 +36,7 @@ public class ModularArithmetic implements IAdditiveGroup<ModularArithmetic>, IFi
     }
 
     @Override
-    public ModularArithmetic multiplicateInverse() {
+    public ModularArithmetic multiplicativeInverse() {
         throw new UnsupportedOperationException();
     }
 
