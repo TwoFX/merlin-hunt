@@ -1,4 +1,4 @@
-package de.markushimmel.merlinhunt.immortalgame.arithmetic;
+package de.markushimmel.merlinhunt.greatundoing.arithmetic;
 
 /**
  * Man, interfaces really are a terrible replacement for type classes!

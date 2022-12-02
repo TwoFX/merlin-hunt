@@ -1,4 +1,4 @@
-package de.markushimmel.merlinhunt.immortalgame.util;
+package de.markushimmel.merlinhunt.greatundoing.util;
 
 public interface UndoingConstants {
 

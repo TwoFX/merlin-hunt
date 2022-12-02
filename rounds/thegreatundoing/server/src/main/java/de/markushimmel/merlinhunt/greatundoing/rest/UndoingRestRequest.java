@@ -1,4 +1,4 @@
-package de.markushimmel.merlinhunt.immortalgame.rest;
+package de.markushimmel.merlinhunt.greatundoing.rest;
 
 import java.util.List;
 

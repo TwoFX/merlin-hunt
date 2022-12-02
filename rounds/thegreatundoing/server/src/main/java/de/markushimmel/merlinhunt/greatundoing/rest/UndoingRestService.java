@@ -1,4 +1,4 @@
-package de.markushimmel.merlinhunt.immortalgame.rest;
+package de.markushimmel.merlinhunt.greatundoing.rest;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -10,8 +10,8 @@ import javax.ws.rs.core.Response.Status;
 
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
-import de.markushimmel.merlinhunt.immortalgame.services.UndoingRestServiceBean;
-import de.markushimmel.merlinhunt.immortalgame.util.UndoingConstants;
+import de.markushimmel.merlinhunt.greatundoing.services.UndoingRestServiceBean;
+import de.markushimmel.merlinhunt.greatundoing.util.UndoingConstants;
 
 @Path("/undoing")
 public class UndoingRestService {

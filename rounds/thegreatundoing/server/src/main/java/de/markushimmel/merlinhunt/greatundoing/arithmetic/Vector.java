@@ -1,9 +1,9 @@
-package de.markushimmel.merlinhunt.immortalgame.arithmetic;
+package de.markushimmel.merlinhunt.greatundoing.arithmetic;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import de.markushimmel.merlinhunt.immortalgame.util.UndoingConstants;
+import de.markushimmel.merlinhunt.greatundoing.util.UndoingConstants;
 
 public class Vector<TScalar extends IAdditiveGroup<TScalar> & IField<TScalar>, T extends IAdditiveGroup<T> & IVectorSpace<TScalar, T>>
         implements IAdditiveGroup<Vector<TScalar, T>>, IVectorSpace<TScalar, Vector<TScalar, T>> {

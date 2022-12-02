@@ -1,4 +1,4 @@
-package de.markushimmel.merlinhunt.immortalgame.arithmetic;
+package de.markushimmel.merlinhunt.greatundoing.arithmetic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

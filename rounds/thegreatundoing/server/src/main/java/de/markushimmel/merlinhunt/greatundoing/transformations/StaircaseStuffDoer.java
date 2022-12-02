@@ -1,12 +1,12 @@
-package de.markushimmel.merlinhunt.immortalgame.transformations;
+package de.markushimmel.merlinhunt.greatundoing.transformations;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import de.markushimmel.merlinhunt.immortalgame.arithmetic.IAdditiveGroup;
-import de.markushimmel.merlinhunt.immortalgame.arithmetic.IField;
-import de.markushimmel.merlinhunt.immortalgame.arithmetic.IVectorSpace;
-import de.markushimmel.merlinhunt.immortalgame.util.UndoingConstants;
+import de.markushimmel.merlinhunt.greatundoing.arithmetic.IAdditiveGroup;
+import de.markushimmel.merlinhunt.greatundoing.arithmetic.IField;
+import de.markushimmel.merlinhunt.greatundoing.arithmetic.IVectorSpace;
+import de.markushimmel.merlinhunt.greatundoing.util.UndoingConstants;
 
 public class StaircaseStuffDoer<TScalar extends IAdditiveGroup<TScalar> & IField<TScalar>, T extends IAdditiveGroup<T> & IVectorSpace<TScalar, T>>
         implements IStuffDoer<TScalar, T> {

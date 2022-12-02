@@ -1,4 +1,4 @@
-package de.markushimmel.merlinhunt.immortalgame.services;
+package de.markushimmel.merlinhunt.greatundoing.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,16 +6,16 @@ import java.util.Random;
 
 import javax.enterprise.context.ApplicationScoped;
 
-import de.markushimmel.merlinhunt.immortalgame.arithmetic.IAdditiveGroup;
-import de.markushimmel.merlinhunt.immortalgame.arithmetic.IField;
-import de.markushimmel.merlinhunt.immortalgame.arithmetic.IVectorSpace;
-import de.markushimmel.merlinhunt.immortalgame.arithmetic.ModularArithmetic;
-import de.markushimmel.merlinhunt.immortalgame.transformations.IStuffDoer;
-import de.markushimmel.merlinhunt.immortalgame.transformations.RandomStuffDoer;
-import de.markushimmel.merlinhunt.immortalgame.transformations.RepeatedStuffDoer;
-import de.markushimmel.merlinhunt.immortalgame.transformations.StaircaseStuffDoer;
-import de.markushimmel.merlinhunt.immortalgame.transformations.StuffDoerRoster;
-import de.markushimmel.merlinhunt.immortalgame.util.UndoingConstants;
+import de.markushimmel.merlinhunt.greatundoing.arithmetic.IAdditiveGroup;
+import de.markushimmel.merlinhunt.greatundoing.arithmetic.IField;
+import de.markushimmel.merlinhunt.greatundoing.arithmetic.IVectorSpace;
+import de.markushimmel.merlinhunt.greatundoing.arithmetic.ModularArithmetic;
+import de.markushimmel.merlinhunt.greatundoing.transformations.IStuffDoer;
+import de.markushimmel.merlinhunt.greatundoing.transformations.RandomStuffDoer;
+import de.markushimmel.merlinhunt.greatundoing.transformations.RepeatedStuffDoer;
+import de.markushimmel.merlinhunt.greatundoing.transformations.StaircaseStuffDoer;
+import de.markushimmel.merlinhunt.greatundoing.transformations.StuffDoerRoster;
+import de.markushimmel.merlinhunt.greatundoing.util.UndoingConstants;
 import io.quarkus.logging.Log;
 
 @ApplicationScoped
