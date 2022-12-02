@@ -6,10 +6,10 @@ import de.markushimmel.merlinhunt.buggyrelay.generator.FullProgramGenerator;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
-@Command(name = "generate")
+@Command(name = "generate", mixinStandardHelpOptions = true)
 public class GenerateCommand implements Runnable {
 
-    @Option(names = "--syntax-errors", negatable = true)
+    @Option(names = "--no-syntax-errors", negatable = true)
     boolean syntaxErrors = true;
 
     @Inject
