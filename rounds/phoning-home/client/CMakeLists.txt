@@ -5,4 +5,7 @@ project(PhoningHomeClient
     DESCRIPTION "Client for the Phoning Home task at the Merlin Hunt"
     LANGUAGES CXX)
 
+find_package(Boost 1.80 REQUIRED COMPONENTS system)
+
 add_executable(client src/main.cpp)
+target_link_libraries(client Boost::system)

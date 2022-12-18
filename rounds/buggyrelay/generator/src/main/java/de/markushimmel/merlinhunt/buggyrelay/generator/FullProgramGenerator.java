@@ -4,24 +4,37 @@ import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 
+import de.markushimmel.merlinhunt.buggyrelay.generator.languages.BrainfuckProgramGenerator;
 import de.markushimmel.merlinhunt.buggyrelay.generator.languages.CPlusPlusProgramGenerator;
+import de.markushimmel.merlinhunt.buggyrelay.generator.languages.FullyEscapedJavaProgramGenerator;
+import de.markushimmel.merlinhunt.buggyrelay.generator.languages.JavaProgramGenerator;
 
 @ApplicationScoped
 public class FullProgramGenerator {
 
     private static final List<IProgramGenerator> ALL_GENERATORS = List.of( //
+            new FullyEscapedJavaProgramGenerator(), //
+
+            new BrainfuckProgramGenerator(), //
+            new JavaProgramGenerator(), //
+
+            new CPlusPlusProgramGenerator(), //
+            new CPlusPlusProgramGenerator(), //
+            new CPlusPlusProgramGenerator(), //
             new CPlusPlusProgramGenerator(), //
 
             new CPlusPlusProgramGenerator(), //
             new CPlusPlusProgramGenerator(), //
-
+            new CPlusPlusProgramGenerator(), //
+            new CPlusPlusProgramGenerator(), //
             new CPlusPlusProgramGenerator(), //
             new CPlusPlusProgramGenerator(), //
             new CPlusPlusProgramGenerator(), //
             new CPlusPlusProgramGenerator() //
     );
 
-    private static final List<String> LEAVES = List.of("a", "b", "c", "d", "e", "f", "g", "h");
+    private static final List<String> LEAVES = List.of("a", "b", "c", "d", "e", "f", "g", "h", "a", "b", "c", "d", "e",
+            "f", "g", "h");
 
     public String generateFinalProgram(boolean syntaxErrors) {
         return get(0, syntaxErrors);

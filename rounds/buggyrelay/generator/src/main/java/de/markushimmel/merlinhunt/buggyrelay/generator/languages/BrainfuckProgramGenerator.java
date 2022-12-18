@@ -13,7 +13,7 @@ public class BrainfuckProgramGenerator implements IProgramGenerator {
         String program = generateProgram(output);
 
         if (withSyntaxError) {
-            program = program.replaceFirst("[", "]");
+            program = program.replaceFirst("\\[", "{");
         }
 
         return program;
