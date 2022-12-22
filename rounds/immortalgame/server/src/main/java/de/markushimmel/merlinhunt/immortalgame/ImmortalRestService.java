@@ -15,8 +15,9 @@ import dev.samstevens.totp.code.DefaultCodeGenerator;
 import dev.samstevens.totp.code.DefaultCodeVerifier;
 import dev.samstevens.totp.time.SystemTimeProvider;
 import dev.samstevens.totp.time.TimeProvider;
+import io.quarkus.logging.Log;
 
-@Path("/immortal")
+@Path("/")
 public class ImmortalRestService {
 
     private static final String SECRET = "CBZV4QGNZZFXMG5AQU4EKHEJG244CO6JNJESMRF3JMHHQZCU5XSSD7PA6INB2DYF";
@@ -32,6 +33,8 @@ public class ImmortalRestService {
         CodeVerifier verifier = new DefaultCodeVerifier(codeGenerator, timeProvider);
 
         boolean successful = verifier.isValidCode(SECRET, code);
+
+        Log.infof("Received code %s. Verdict: %s", code, successful ? "correct" : "incorrect");
 
         if (successful) {
             return "Correct! The solution code is 'sdfkgjhweifdefjkeshfuierwfaw'";

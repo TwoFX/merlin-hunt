@@ -1,0 +1,14 @@
+#!/bin/sh
+
+DEST="$1" ; shift
+MEMLIMIT="$1" ; shift
+SOLUTION=$(cat "$@")
+
+cat > "$DEST" <<EOF
+#!/bin/sh
+printf "$SOLUTION\\n"
+EOF
+
+chmod a+x "$DEST"
+
+exit 0

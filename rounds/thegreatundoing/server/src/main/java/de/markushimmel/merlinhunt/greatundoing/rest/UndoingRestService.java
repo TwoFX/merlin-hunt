@@ -13,7 +13,7 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import de.markushimmel.merlinhunt.greatundoing.services.UndoingRestServiceBean;
 import de.markushimmel.merlinhunt.greatundoing.util.UndoingConstants;
 
-@Path("/undoing")
+@Path("/")
 public class UndoingRestService {
 
     @Inject
