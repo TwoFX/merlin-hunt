@@ -1,11 +1,6 @@
-.PHONY: server docker clean
+PROBLEMNAME := The Immortal Game
+FLAGNAME := immortalgame
+SHORTNAME := D
 
-server:
-	$(MAKE) -C server server
-
-docker:
-	$(MAKE) -C server docker
-
-clean:
-	$(MAKE) -C server clean
-
+include ../../make/round.mk
+include ../../make/has-server.mk
