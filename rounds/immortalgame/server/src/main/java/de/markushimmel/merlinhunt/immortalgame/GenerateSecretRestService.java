@@ -5,6 +5,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.eclipse.microprofile.openapi.annotations.Operation;
+
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
@@ -19,6 +21,7 @@ public class GenerateSecretRestService {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
+    @Operation(hidden = true)
     public String generateSecret() throws Exception {
         SecretGenerator secretGenerator = new DefaultSecretGenerator(64);
         String secret = secretGenerator.generate();

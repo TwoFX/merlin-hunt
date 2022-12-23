@@ -4,3 +4,5 @@ SHORTNAME := D
 
 include ../../make/round.mk
 include ../../make/has-server.mk
+
+zip: $(FLAGNAME).zip

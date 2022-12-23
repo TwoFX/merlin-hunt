@@ -1,4 +1,4 @@
-.PHONY: server docker clean
+.PHONY: server docker clean openapi
 
 server:
 	$(MAKE) -C server server
@@ -9,3 +9,5 @@ docker:
 clean::
 	$(MAKE) -C server clean
 
+openapi::
+	$(MAKE) -C server openapi
