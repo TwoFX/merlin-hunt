@@ -1,0 +1,94 @@
+secrets:
+  mysql_user_password:
+    file: ../../secrets/mysql_user_password
+  mysql_root_password:
+    file: ../../secrets/mysql_root_password
+  judgedaemon_password:
+    file: ../../secrets/judgedaemon_password
+
+services:
+  registry:
+    image: registry:2
+    container_name: registry
+    hostname: registry
+    ports:
+      - 5000:5000
+    environment:
+      REGISTRY_HTTP_ADDR: 0.0.0.0:5000
+      REGISTRY_HTTP_TLS_CERTIFICATE: /certs/certificate.crt
+      REGISTRY_HTTP_TLS_KEY: /certs/certificate.key
+      REGISTRY_AUTH: htpasswd
+      REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+      REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+    volumes:
+      - /var/registry:/var/lib/registry
+      - /var/www/certs:/certs
+      - /var/www/auth:/auth
+  immortalgame:
+    image: markushimmel.de:5000/merlinhunt/immortalgame/server:latest
+    container_name: immortal
+    hostname: immortal
+    ports:
+      - 8080:8080
+  greatundoing:
+    image: markushimmel.de:5000/merlinhunt/thegreatundoing/server:latest
+    container_name: undoing
+    hostname: undoing
+    ports:
+      - 8081:8080
+  mariadb:
+    image: mariadb:latest
+    container_name: dj-mariadb
+    hostname: dj-mariadb
+    secrets:
+      - mysql_user_password
+      - mysql_root_password
+    environment:
+      MYSQL_PASSWORD_FILE: /run/secrets/mysql_user_password
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
+      MYSQL_USER: domjudge
+      MYSQL_DATABASE: domjudge
+    volumes:
+      - /var/lib/mysql:/var/lib/mysql
+    ports:
+      - 13306:13306
+  domserver:
+    restart: always
+    image: domjudge/domserver:latest
+    container_name: domserver
+    hostname: domkeks
+    secrets:
+      - mysql_user_password
+      - mysql_root_password
+    environment:
+      MYSQL_HOST: mariadb
+      MYSQL_USER: domjudge
+      MYSQL_DATABASE: domjudge
+      MYSQL_PASSWORD_FILE: /run/secrets/mysql_user_password
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
+    ports:
+      - 12345:80
+  judgehost:
+    restart: always
+    hostname: judgehost
+    image: domjudge/judgehost:latest
+    secrets:
+      - judgedaemon_password
+    environment:
+      DAEMON_ID: 0
+      JUDGEDAEMON_PASSWORD_FILE: /run/secrets/judgedaemon_password
+      DOMSERVER_BASE_URL: http://domkeks/
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  nginx:
+    restart: always
+    hostname: nginx
+    container_name: nginx
+    image: nginx
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./nginx:/etc/nginx:ro
+      - /var/www/certs:/var/www/certs
