@@ -1,4 +1,4 @@
-.PHONY: clean flag dj-zip zip
+.PHONY: clean flag dj-zip zip answer
 SUFFIX := This is a secret suffix
 
 flag: $(FLAGNAME).flag
@@ -6,6 +6,9 @@ flag: $(FLAGNAME).flag
 
 dj-zip: $(SHORTNAME).zip
 	cp $< ../target/domjudge
+
+answer: $(FLAGNAME).ans
+	cp $< ../target/answers
 
 $(FLAGNAME).flag:
 	printf "$(PROBLEMNAME)$(SUFFIX)" | sha256sum > $@
