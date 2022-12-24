@@ -25,13 +25,12 @@ zip: target/problems
 
 flag: target/flags
 	@for i in $(PROBLEMS); do \
-	$(MAKE) -C $$i zip; done
+	$(MAKE) -C $$i flag; done
 
 clean:
 	rm -rf target
 	@for i in $(PROBLEMS); do \
 	$(MAKE) -C $$i clean; done
-
 
 server:
 	@for i in $(SERVERPROBLEMS); do \

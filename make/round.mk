@@ -1,4 +1,4 @@
-.PHONY: clean
+.PHONY: clean flag dj-zip zip
 SUFFIX := This is a secret suffix
 
 flag: $(FLAGNAME).flag
@@ -35,4 +35,4 @@ zip: $(FLAGNAME).zip
 	cp $< ../target/problems
 
 $(FLAGNAME).zip: $(INPUTFILES)
-	(cd input && zip ../$@ $(INPUTFILES))
+	(cd input && zip ../$@ `printf "$^" | sed "s/input\\///g" -`)

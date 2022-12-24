@@ -1,7 +1,7 @@
 PROBLEMNAME := The Great Undoing
 FLAGNAME := greatundoing
 SHORTNAME := J
-INPUTFILES: openapi.yaml hint.txt
+INPUTFILES := input/openapi.yaml input/hint.txt
 
 include ../../make/round.mk
 include ../../make/has-server.mk
