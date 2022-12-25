@@ -1,5 +1,7 @@
 .PHONY: clean dj-zip server docker flag zip answer
 
+export SECRETSUFFIX
+
 target:
 	mkdir -p target
 
@@ -36,4 +38,4 @@ answer: target/answers
 	$(MAKE) -C $$i answer; done
 
 assemble: zip flag answer
-	(cd target && ../../scripts/assemble.py "$(INITIALPASS)" $(PROBLEMS))
+	(cd target && ../../scripts/assemble.py $(PROBLEMS))

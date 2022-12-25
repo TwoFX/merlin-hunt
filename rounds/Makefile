@@ -1,5 +1,5 @@
-PROBLEMS := immortalgame greatundoing
+PROBLEMS := accessgranted immortalgame greatundoing
 SERVERPROBLEMS := immortalgame greatundoing
-INITIALPASS := Welcome to the party
+SECRETSUFFIX := This is the secret suffix for generating flags for the main contest
 
 include ../make/contest.mk

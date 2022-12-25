@@ -1,5 +1,4 @@
 .PHONY: clean flag dj-zip zip answer
-SUFFIX := This is a secret suffix
 
 flag: $(FLAGNAME).flag
 	cp $< ../target/flags
@@ -11,7 +10,7 @@ answer: $(FLAGNAME).ans
 	cp $< ../target/answers
 
 $(FLAGNAME).flag:
-	printf "$(PROBLEMNAME)$(SUFFIX)" | sha256sum > $@
+	printf "$(PROBLEMNAME)$(SECRETSUFFIX)" | sha256sum > $@
 
 dj-contest:
 	mkdir -p $@
@@ -22,7 +21,7 @@ dj-contest/data/secret: dj-contest
 dj-contest/data/secret/1.in: dj-contest/data/secret
 	touch $@
 
-dj-contest/data/secret/1.ans: dj-contest/data/secret flag
+dj-contest/data/secret/1.ans: dj-contest/data/secret $(FLAGNAME).flag
 	cp $(FLAGNAME).flag $@
 
 dj-contest/domjudge-problem.ini: dj-contest
