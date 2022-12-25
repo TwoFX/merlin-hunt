@@ -34,3 +34,6 @@ docker:
 answer: target/answers
 	@for i in $(PROBLEMS); do \
 	$(MAKE) -C $$i answer; done
+
+assemble: zip flag answer
+	(cd target && ../../scripts/assemble.py "$(INITIALPASS)" $(PROBLEMS))
