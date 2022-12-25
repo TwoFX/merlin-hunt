@@ -28,14 +28,10 @@ services:
     image: markushimmel.de:5000/merlinhunt/immortalgame/server:latest
     container_name: immortal
     hostname: immortal
-    ports:
-      - 8080:8080
   greatundoing:
     image: markushimmel.de:5000/merlinhunt/thegreatundoing/server:latest
     container_name: undoing
     hostname: undoing
-    ports:
-      - 8081:8080
   mariadb:
     image: mariadb:latest
     container_name: dj-mariadb
@@ -50,8 +46,6 @@ services:
       MYSQL_DATABASE: domjudge
     volumes:
       - /var/lib/mysql:/var/lib/mysql
-    ports:
-      - 13306:13306
   domserver:
     restart: always
     image: domjudge/domserver:latest
@@ -66,8 +60,6 @@ services:
       MYSQL_DATABASE: domjudge
       MYSQL_PASSWORD_FILE: /run/secrets/mysql_user_password
       MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
-    ports:
-      - 12345:80
   judgehost:
     restart: always
     hostname: judgehost
