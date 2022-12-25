@@ -92,3 +92,4 @@ services:
     volumes:
       - ./nginx:/etc/nginx:ro
       - /var/www/certs:/var/www/certs
+      - ../../files:/var/www/files
