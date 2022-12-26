@@ -1,0 +1,17 @@
+dog
+kitty
+elephant
+sloth
+horse
+jellyfish
+okapi
+panda
+blobfish
+narwhal
+unicorn
+shrimp
+wombat
+markhor
+coatimundi
+pangolin
+echidna

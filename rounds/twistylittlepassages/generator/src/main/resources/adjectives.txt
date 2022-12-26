@@ -1,0 +1,13 @@
+fast
+slow
+relaxed
+red
+tired
+sleeping
+hungry
+angry
+cute
+cuddly
+fierce
+sleepy
+happy
