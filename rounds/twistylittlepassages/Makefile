@@ -13,7 +13,8 @@ image/merlin-init.sql.gz: image/merlin-init.sql
 	gzip -k image/merlin-init.sql
 
 docker: image/merlin-init.sql.gz
-	docker build -f image/Dockerfile -t blubb image
+	docker build -f image/Dockerfile -t markushimmel.de:5000/merlinhunt/twistylittlepassages/db image
+	docker push markushimmel.de:5000/merlinhunt/twistylittlepassages/db
 
 clean::
 	rm -f image/merlin-init.sql image/merlin-init.sql.gz
