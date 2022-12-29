@@ -1,3 +1,3 @@
 FROM postgres:alpine
 
-COPY merlin-init.sql /docker-entrypoint-initdb.d/merlin-init.sql
+COPY merlin-init.sql.gz /docker-entrypoint-initdb.d/merlin-init.sql.gz
