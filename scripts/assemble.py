@@ -18,7 +18,7 @@ for index in range(len(rounds) - 1, -1, -1):
 
   # Encrypt the next
   to_encrypt = nexts[index]
-  system(f"xargs -I % gpg -c --batch --passphrase \"%\" {to_encrypt} < answers/{cur}.ans")
+  system(f"xargs -0 -I % gpg -c --batch --passphrase \"%\" {to_encrypt} < answers/{cur}.ans")
 
   # Add to archive
   zipadd(probfile, to_encrypt + ".gpg")

@@ -1,7 +1,7 @@
 PROBLEMNAME := Twistly Little Passages
-FLAGNAME := twistlylittlepassages
+FLAGNAME := twistylittlepassages
 SHORTNAME := E
-INPUTFILES := hint.txt
+INPUTFILES := input/hint.txt
 
 include ../../make/round.mk
 
