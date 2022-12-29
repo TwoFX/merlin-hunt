@@ -1,0 +1,135 @@
+\documentclass[fontsize=10pt,a4paper,DIV=12]{scrarticle}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{csquotes}
+\usepackage{hyperref}
+\usepackage{booktabs}
+
+\title{Merlin Hunt}
+\subtitle{General information and advice}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{General information and schedule}
+
+The main medium of communication is Discord. Every participant must join the following
+Discord server:
+
+\begin{center}
+	TBD
+\end{center}
+
+\subsection{Schedule}
+The date of the contest is TBD. The schedule is as follows (all times in CET):
+
+\begin{center}
+	\begin{tabular}{@{}ll@{}}
+		\toprule
+		Time & Event \\ \midrule
+		09:00 & Start of late signup \\
+		09:45 & Last info meeting on Discord \\
+		10:00 & Start of contest \\
+		00:00 & End of contest \\
+		00:05 & Award ceremony on Discord \\ \bottomrule
+	\end{tabular}
+\end{center}
+
+\subsection{Teams and registration}
+
+Participants should participate in teams of two or three people. Forming larger
+teams is possible but not recommended. Participating alone is also possible but
+strongly discouraged.
+
+To register a team, send me a private message on Discord. Please include the team
+name as well as the names and Discord handles of all team members.
+
+If you do not have a team, feel free to message me and I will try to match you up
+with other individuals who do not have a team.
+
+\section{Competition format}
+The puzzle hunt is structured as an ordered series of tasks. A task is a
+zip file containing the following things:
+\begin{itemize}
+	\item The \textit{flag} of the previous task: a file with the extension
+		\texttt{.flag} that you should upload to DOMJudge (see below) to obtain
+		points for the previous problem.
+	\item One or more files that make up the puzzle that you have to solve for this
+		task.
+	\item The next task, as an encrypted zip file with extension \texttt{.zip.gpg}.
+		The solution of the task is the passphrase needed to decrypt the next task.
+\end{itemize}
+
+\subsection{DOMJudge}
+Each team's progress is tracked via an online system called DOMJudge. The URL of
+the DOMJudge system is
+\begin{center}
+	\url{https://domjudge.markushimmel.de/}.
+\end{center}
+
+As soon as you successfully decrypt a zip file, you should upload the flag
+contained in the archive to DOMJudge in order to obtain points for the task you
+just solved.
+
+You will obtain credentials for DOMJudge after signing up. The same credentials
+will work for the practice session and the main contest.
+
+\subsection{Example}
+Here is an example of how the process of participating in the puzzle hunt looks.
+You will be able to practice the process during the practice session; see below.
+
+\begin{itemize}
+	\item Before the contest, you download the first task. It is a zip file called
+		\texttt{gettingstarted.zip}. Inside the zip archive, there are two files:
+		\texttt{README.md} and \texttt{thefirsttask.zip.gpg}. The readme file tells
+		you that you will receive the password to decrypt the encrypted file once
+		the contest has started.
+	\item As soon as the contest starts, the password for \texttt{thefirsttask.zip.gpg}
+		is announced on Discord. You decrypt the archive and find three files inside:
+		\texttt{gettingstarted.flag}, \texttt{puzzle.txt} and \texttt{thesecondtask.zip.gpg}.
+	\item You upload \texttt{gettingstarted.flag} to DOMJudge and receive one point.
+	\item You solve the puzzle contained in \texttt{puzzle.txt}. The solution is the
+		sentence "Elephants are larger than pixels".
+	\item You use this phrase to decrypt \texttt{thesecondtask.zip.gpg} and find
+		four files inside the archive: \texttt{thefirsttask.flag}, \texttt{secondpuzzle.txt},
+		\texttt{secondpuzzle.jpg} and \texttt{thethirdtask.zip.gpg}.
+	\item You upload \texttt{thefirsttask.flag} to DOMJudge and receive one point.
+	\item You solve the puzzle contained in \texttt{secondpuzzle.*}, use this to decrypt the
+		next problem archive, upload the flag, solve the next puzzle, and so on.
+\end{itemize}
+
+\section{Rules and hints}
+\begin{itemize}
+	\item Before the contest, you should make sure that you are able to decrypt
+		files that were encrypted using GnuPG. On Linux, this is accomplished
+		using the command-line tool \texttt{gpg}. On Debian/Ubuntu/Mint, you can
+		install it by saying
+		\begin{center}
+			\texttt{sudo apt install gnupg}
+		\end{center}
+		You can decrypt a file using the invocation
+		\begin{center}
+			\texttt{gpg -d task.zip.gpg > task.zip}
+		\end{center}
+		There are also GUI tools available on Windows and Linux.
+	\item It is strongly recommended that at least one team member has access
+		to a reasonably powerful Linux machine or VM.
+	\item After solving a puzzle, you should know exactly what the solution to
+		the puzzle is. Do not try to brute force the passphrase, even if you
+		believe that you have reduced the number of possible passphrases to a
+		small number.
+	\item Some puzzles will require interacting with externally hosted services.
+		Please be considerate and do not spam them with a large number of autmated
+		requests.
+\end{itemize}
+
+\section{Practice session}
+There will be a practice session to test your understanding of the contest format and
+get familiar with \texttt{gpg}, DOMJudge and so on. The practice session will run
+from TBD to TBD. The problem package and initial passphrase for the practice session
+will be made available via Discord.
+
+\end{document}
