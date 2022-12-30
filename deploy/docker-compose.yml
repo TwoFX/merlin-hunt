@@ -5,6 +5,8 @@ secrets:
     file: ../../secrets/mysql_root_password
   judgedaemon_password:
     file: ../../secrets/judgedaemon_password
+  postgres_postgres_password:
+    file: ../../secrets/postgres_postgres_password
 
 services:
   registry:
@@ -85,3 +87,14 @@ services:
       - ./nginx:/etc/nginx:ro
       - /var/www/certs:/var/www/certs
       - ../../files:/var/www/files
+  twisty:
+    restart: always
+    hostname: twisty
+    container_name: twisty
+    image: markushimmel.de:5000/merlinhunt/twistylittlepassages/db
+    secrets:
+      - postgres_postgres_password
+    environment:
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_postgres_password
+    ports:
+      - 5432:5432
