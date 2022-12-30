@@ -39,3 +39,10 @@ answer: target/answers
 
 assemble: zip flag answer
 	(cd target && ../../scripts/assemble.py $(PROBLEMS))
+
+target/problems/$(firstword $(PROBLEMS)).zip.sha256: assemble
+	(cd target/problems && sha256sum $(firstword $(PROBLEMS)).zip > $(firstword $(PROBLEMS)).zip.sha256)
+
+push: target/problems/$(firstword $(PROBLEMS)).zip.sha256
+	scp target/problems/$(firstword $(PROBLEMS)).zip markus@markushimmel.de:files
+	scp target/problems/$(firstword $(PROBLEMS)).zip.sha256 markus@markushimmel.de:files
