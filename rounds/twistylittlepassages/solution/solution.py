@@ -2,7 +2,7 @@
 from sqlalchemy import inspect, create_engine, text
 import re
 
-engine = create_engine('postgresql://azurediamond:hunter2@localhost/postgres')
+engine = create_engine('postgresql://azurediamond:hunter2@markushimmel.de/postgres')
 insp = inspect(engine)
 
 key_pattern = re.compile('^([a-z]*)_that_is_([a-z]*)$')
