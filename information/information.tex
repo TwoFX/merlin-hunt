@@ -1,4 +1,4 @@
-\documentclass[fontsize=10pt,a4paper,DIV=12]{scrarticle}
+\documentclass[fontsize=10pt,a4paper,DIV=12,parskip=half]{scrarticle}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -9,28 +9,31 @@
 
 \title{Merlin Hunt}
 \subtitle{General information and advice}
-\date{}
+\date{Last updated: \today}
 
 \begin{document}
 \maketitle
 
-\section{General information and schedule}
+\subsection*{General information and schedule}
 
-The main medium of communication is Discord. Every participant must join the following
+The Merlin Hunt is a virtual puzzle hunt for people who know how to program.
+It is written and organized by Markus Himmel. While it is not being advertised
+publically, participation is open to everyone.
+
+\paragraph{Communication} The main medium of communication is Discord. Every participant must join the following
 Discord server:
 
 \begin{center}
-	TBD
+	\url{https://discord.gg/ncmky4ygDc}
 \end{center}
 
-\subsection{Schedule}
+\paragraph{Schedule}
 The date of the contest is TBD. The schedule is as follows (all times in CET):
 
 \begin{center}
 	\begin{tabular}{@{}ll@{}}
 		\toprule
 		Time & Event \\ \midrule
-		09:00 & Start of late signup \\
 		09:45 & Last info meeting on Discord \\
 		10:00 & Start of contest \\
 		00:00 & End of contest \\
@@ -38,19 +41,41 @@ The date of the contest is TBD. The schedule is as follows (all times in CET):
 	\end{tabular}
 \end{center}
 
-\subsection{Teams and registration}
+\paragraph{Contest location}
+The puzzle hunt can be completely played on-line using a computer. All official
+communication will be via Discord.
+
+There wil be limited amount of space for teams to participate onsite in Karlsruhe (just for the fun of it).
+If you would like to participate onsite, please indicate this during sign-up. If
+there are more interested teams than there is space, I will pick the teams that
+can participate onsite in some way.
+
+If you participate onsite, please bring a pair of headphones!
+
+\paragraph{Teams and registration}
 
 Participants should participate in teams of two or three people. Forming larger
 teams is possible but not recommended. Participating alone is also possible but
 strongly discouraged.
 
-To register a team, send me a private message on Discord. Please include the team
-name as well as the names and Discord handles of all team members.
+To register a team, send me\footnote{Discord handle: TwoFx\#6343} a private
+message on Discord.
+
+Please include the following information:
+\begin{itemize}
+	\item Your team name
+	\item The names and Discord handles of all team members
+	\item Which team member is the captain
+	\item Whether or not you would like to participant onsite in Karlsruhe
+\end{itemize}
+
+While it will be possible to sign up even after the contest has started, please
+sign up early.
 
 If you do not have a team, feel free to message me and I will try to match you up
 with other individuals who do not have a team.
 
-\section{Competition format}
+\subsection*{Competition format}
 The puzzle hunt is structured as an ordered series of tasks. A task is a
 zip file containing the following things:
 \begin{itemize}
@@ -63,7 +88,12 @@ zip file containing the following things:
 		The solution of the task is the passphrase needed to decrypt the next task.
 \end{itemize}
 
-\subsection{DOMJudge}
+The initial zip file containing the first task will be distributed via Discord
+shortly before the contest. The password to decrypt the task will be
+distributed via Discord as soon as the contest starts. You should download the
+initial zip file in advance as it will be large.
+
+\paragraph{DOMJudge}
 Each team's progress is tracked via an online system called DOMJudge. The URL of
 the DOMJudge system is
 \begin{center}
@@ -77,7 +107,12 @@ just solved.
 You will obtain credentials for DOMJudge after signing up. The same credentials
 will work for the practice session and the main contest.
 
-\subsection{Example}
+On the DOMJudge page, there will be a live ranking of all participating teams.
+The teams will be sorted using ICPC scoring rules, which basically means that
+to appear at the top of the leaderboard, you should solve many puzzles and do
+so quickly and with few hints.
+
+\paragraph{Example}
 Here is an example of how the process of participating in the puzzle hunt looks.
 You will be able to practice the process during the practice session; see below.
 
@@ -101,7 +136,22 @@ You will be able to practice the process during the practice session; see below.
 		next problem archive, upload the flag, solve the next puzzle, and so on.
 \end{itemize}
 
-\section{Rules and hints}
+\paragraph{Hints}
+If you get stuck on a puzzle, it is possible to request a hint. You may only
+request a hint if you have been working on a puzzle for at least one hour
+(as measured by the last successful submission on DOMJudge).
+
+To request a hint, you should do two things:
+\begin{enumerate}
+	\item In DOMJUdge, submit the \texttt{.flag} file of a previous puzzle as an attempt for the puzzle you
+		want to request a hint for. You will receive a verdict of Wrong Answer. If you solve
+		the puzzle later, you will incur a 20 minute time penalty.
+	\item Send me a private message on Discord.
+\end{enumerate}
+
+I will then join you for a quick voice call to get you un-stuck.
+
+\subsection*{Rules and advice}
 \begin{itemize}
 	\item Before the contest, you should make sure that you are able to decrypt
 		files that were encrypted using GnuPG. On Linux, this is accomplished
@@ -117,6 +167,7 @@ You will be able to practice the process during the practice session; see below.
 		There are also GUI tools available on Windows and Linux.
 	\item It is strongly recommended that at least one team member has access
 		to a reasonably powerful Linux machine or VM.
+	\item Using multiple computers per team and using the internet is permitted.
 	\item After solving a puzzle, you should know exactly what the solution to
 		the puzzle is. Do not try to brute force the passphrase, even if you
 		believe that you have reduced the number of possible passphrases to a
@@ -124,9 +175,11 @@ You will be able to practice the process during the practice session; see below.
 	\item Some puzzles will require interacting with externally hosted services.
 		Please be considerate and do not spam them with a large number of autmated
 		requests.
+	\item The name of a puzzle is part of the puzzle. The full name of each puzzle
+		can be viewed in the DOMJudge submit dialog.
 \end{itemize}
 
-\section{Practice session}
+\subsection*{Practice session}
 There will be a practice session to test your understanding of the contest format and
 get familiar with \texttt{gpg}, DOMJudge and so on. It will work just like the real
 contest, except that the problems are uninteresting dummy problems and you have
@@ -139,5 +192,10 @@ doing the practice session, but an hour should be more than enough.
 The practice session will run
 from TBD to TBD. The problem package and initial passphrase for the practice session
 will be made available via Discord.
+
+\subsection*{Extended contest}
+After the contest has ended, the contest infrastructure will remain accessible for
+a few more weeks or months. There will be an extended contest in DOMJudge so that you can
+continue solving the puzzles past the end of the contest if you wish.
 
 \end{document}
