@@ -1,10 +1,10 @@
 .PHONY: server docker clean openapi
 
 server:
-	./mvnw package -Pnative -Dquarkus.native.container-build=true
+	./mvnw package
 
 docker: server
-	docker build -f src/main/docker/Dockerfile.native-micro -t markushimmel.de:5000/merlinhunt/$(CONTAINERNAME) .
+	docker build -f src/main/docker/Dockerfile.jvm -t markushimmel.de:5000/merlinhunt/$(CONTAINERNAME) .
 	docker push markushimmel.de:5000/merlinhunt/$(CONTAINERNAME)
 
 target/openapi.yaml:
