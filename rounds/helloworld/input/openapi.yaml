@@ -1,0 +1,34 @@
+---
+openapi: 3.0.3
+info:
+  title: hello-world API
+  version: 1.0.0-SNAPSHOT
+servers:
+  - url: greeting.markushimmel.de/
+paths:
+  /:
+    post:
+      tags:
+      - Greeting Rest Service
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GreetingRestRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+components:
+  schemas:
+    GreetingRestRequest:
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          description: The name of the person to greet
+          type: string
