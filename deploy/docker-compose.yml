@@ -98,3 +98,8 @@ services:
       POSTGRES_PASSWORD_FILE: /run/secrets/postgres_postgres_password
     ports:
       - 5432:5432
+  hello:
+    restart: always
+    hostname: hello
+    container_name: hello
+    image: markushimmel.de:5000/merlinhunt/hello/server
