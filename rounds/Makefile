@@ -1,4 +1,4 @@
-PROBLEMS := accessgranted helloworld redacted immortalgame twistylittlepassages zweiwalkueren buggyrelay hafenrundfahrt greatundoing
+PROBLEMS := accessgranted helloworld redacted immortalgame twistylittlepassages zweiwalkueren buggyrelay kleinehafenrundfahrt greatundoing
 SERVERPROBLEMS := immortalgame greatundoing twistylittlepassages
 SECRETSUFFIX := This is the secret suffix for generating flags for the main contest
 

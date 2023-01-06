@@ -1,5 +1,5 @@
 PROBLEMNAME := Kleine Hafenrundfahrt
-FLAGNAME := hafenrundfahrt
+FLAGNAME := kleinehafenrundfahrt
 SHORTNAME := H
 INPUTFILES := input/TODO.txt
 
