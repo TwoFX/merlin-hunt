@@ -79,12 +79,13 @@ services:
     restart: always
     hostname: nginx
     container_name: nginx
-    image: nginx
+    image: markushimmel.de:5000/merlinhunt/nginx
+    build:
+      dockerfile: Dockerfile-nginx
     ports:
       - 80:80
       - 443:443
     volumes:
-      - ./nginx:/etc/nginx:ro
       - /var/www/certs:/var/www/certs
       - ../../files:/var/www/files
   twisty:
