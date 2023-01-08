@@ -1,6 +1,6 @@
 PROBLEMNAME := Buggy Relay
 FLAGNAME := buggyrelay
-SHORTNAME := G
+SHORTNAME := E
 INPUTFILES := input/TODO.txt
 
 include ../../make/round.mk
