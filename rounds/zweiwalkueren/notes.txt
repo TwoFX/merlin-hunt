@@ -1,0 +1,8 @@
+https://man.archlinux.org/man/sox.1.en
+
+Zwei Datein mixen, erste mit Faktor 0,5, zweite mit Faktor -1
+sox -m -v 0.5 file1.flac -v -1 file2.flac output.flac
+
+Tag setzen:
+metaflac --remove-tag=TITLE "--set-tag=TITLE=Ich mag Kekse" test.flac
+
