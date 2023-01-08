@@ -1,5 +1,6 @@
 dj-contest/
 *.flag
+*.flag.in
 target/
 
 # Created by https://www.toptal.com/developers/gitignore/api/linux,vim,java,c++,windows,latex,haskell

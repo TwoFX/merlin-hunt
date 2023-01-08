@@ -9,8 +9,11 @@ dj-zip: $(SHORTNAME).zip
 answer: $(FLAGNAME).ans
 	cp $< ../target/answers
 
-$(FLAGNAME).flag:
-	printf "$(PROBLEMNAME)$(SECRETSUFFIX)" | sha256sum > $@
+$(FLAGNAME).flag.in:
+	printf "$(PROBLEMNAME)$(SECRETSUFFIX)" > $@
+
+$(FLAGNAME).flag: $(FLAGNAME).flag.in
+	sha256sum $< > $@
 
 dj-contest:
 	mkdir -p $@
@@ -31,7 +34,7 @@ $(SHORTNAME).zip: dj-contest/domjudge-problem.ini dj-contest/data/secret/1.in dj
 	(cd dj-contest && zip ../$@ `printf "$^" | sed "s/dj-contest\\///g" -`)
 
 clean::
-	rm -rf dj-contest $(FLAGNAME).flag $(SHORTNAME).zip $(FLAGNAME).zip
+	rm -rf dj-contest $(FLAGNAME).flag $(SHORTNAME).zip $(FLAGNAME).zip $(FLAGNAME).flag.in
 
 zip: $(FLAGNAME).zip
 	cp $< ../target/problems

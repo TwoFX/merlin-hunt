@@ -18,7 +18,7 @@ zip: target/problems
 
 flag: target/flags
 	@for i in $(PROBLEMS); do \
-	$(MAKE) -C $$i flag; done
+	$(MAKE) -C $$i flag; cat target/flags/$$i.flag >> target/flags/flags.txt; done
 
 clean:
 	rm -rf target
