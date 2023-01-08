@@ -1,0 +1,27 @@
+---
+openapi: 3.0.3
+info:
+  title: immortal-game API
+  version: 1.0.0-SNAPSHOT
+servers:
+  - url: https://immortal.markushimmel.de/
+paths:
+  /{code}:
+    get:
+      tags:
+      - Immortal Rest Service
+      description: Verifies an authentication code and returns the solution code
+      parameters:
+      - name: code
+        in: path
+        description: A six-digit numeric authentication code
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
