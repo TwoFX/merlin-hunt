@@ -1,12 +1,12 @@
 PROBLEMNAME := Twistly Little Passages
 FLAGNAME := twistylittlepassages
 SHORTNAME := E
-INPUTFILES := input/jarkko
+INPUTFILES := input/lowercase
 
 include ../../make/round.mk
 
-input/jarkko: caesar/caesar
-	$< 1 < caesar/hint.txt > input/jarkko
+input/lowercase: caesar/caesar
+	$< 1 < caesar/hint.txt > $@
 
 caesar/caesar: caesar/caesar.cpp
 	g++ $< -o $@
@@ -25,5 +25,5 @@ docker: image/merlin-init.sql.gz
 	docker push markushimmel.de:5000/merlinhunt/twistylittlepassages/db
 
 clean::
-	rm -f image/merlin-init.sql image/merlin-init.sql.gz input/jarkko caesar/caesar
+	rm -f image/merlin-init.sql image/merlin-init.sql.gz input/lowercase caesar/caesar
 	$(MAKE) -C generator clean
