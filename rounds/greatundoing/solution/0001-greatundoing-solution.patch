@@ -5,15 +5,15 @@ Subject: [PATCH] [greatundoing] solution
 
 ---
  .../arithmetic/ModularArithmetic.java         |  4 +-
- .../immortalgame/arithmetic/Vector.java       |  4 +
- .../immortalgame/rest/UndoingRestService.java |  6 ++
+ .../greatundoing/arithmetic/Vector.java       |  4 +
+ .../greatundoing/rest/UndoingRestService.java |  6 ++
  .../services/UndoingRestServiceBean.java      | 74 +++++++++++++++++++
  4 files changed, 86 insertions(+), 2 deletions(-)
 
-diff --git a/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/arithmetic/ModularArithmetic.java b/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/arithmetic/ModularArithmetic.java
+diff --git a/rounds/greatundoing/server/src/main/java/de/markushimmel/merlinhunt/greatundoing/arithmetic/ModularArithmetic.java b/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/arithmetic/ModularArithmetic.java
 index 2eef1fd..3eba4cd 100644
---- a/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/arithmetic/ModularArithmetic.java
-+++ b/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/arithmetic/ModularArithmetic.java
+--- a/rounds/greatundoing/server/src/main/java/de/markushimmel/merlinhunt/greatundoing/arithmetic/ModularArithmetic.java
++++ b/rounds/greatundoing/server/src/main/java/de/markushimmel/merlinhunt/greatundoing/arithmetic/ModularArithmetic.java
 @@ -47,7 +47,7 @@ public class ModularArithmetic implements IAdditiveGroup<ModularArithmetic>, IFi
          // But I think that it's almost correct, my friends Pierre
          // and Joseph-Louis told me so. Right now, it seems to always
@@ -32,10 +32,10 @@ index 2eef1fd..3eba4cd 100644
      }
  
  }
-diff --git a/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/arithmetic/Vector.java b/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/arithmetic/Vector.java
+diff --git a/rounds/greatundoing/server/src/main/java/de/markushimmel/merlinhunt/greatundoing/arithmetic/Vector.java b/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/arithmetic/Vector.java
 index a0ec604..6e1534b 100644
---- a/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/arithmetic/Vector.java
-+++ b/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/arithmetic/Vector.java
+--- a/rounds/greatundoing/server/src/main/java/de/markushimmel/merlinhunt/greatundoing/arithmetic/Vector.java
++++ b/rounds/greatundoing/server/src/main/java/de/markushimmel/merlinhunt/greatundoing/arithmetic/Vector.java
 @@ -46,6 +46,10 @@ public class Vector<TScalar extends IAdditiveGroup<TScalar> & IField<TScalar>, T
          return new Vector<>(values.stream().map(IAdditiveGroup::additiveInverse).toList());
      }
@@ -47,11 +47,11 @@ index a0ec604..6e1534b 100644
      @Override
      public int hashCode() {
          final int prime = 31;
-diff --git a/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/rest/UndoingRestService.java b/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/rest/UndoingRestService.java
+diff --git a/rounds/greatundoing/server/src/main/java/de/markushimmel/merlinhunt/greatundoing/rest/UndoingRestService.java b/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/rest/UndoingRestService.java
 index cad5f00..8294460 100644
---- a/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/rest/UndoingRestService.java
-+++ b/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/rest/UndoingRestService.java
-@@ -2,6 +2,7 @@ package de.markushimmel.merlinhunt.immortalgame.rest;
+--- a/rounds/greatundoing/server/src/main/java/de/markushimmel/merlinhunt/greatundoing/rest/UndoingRestService.java
++++ b/rounds/greatundoing/server/src/main/java/de/markushimmel/merlinhunt/greatundoing/rest/UndoingRestService.java
+@@ -2,6 +2,7 @@ package de.markushimmel.merlinhunt.greatundoing.rest;
  
  import javax.inject.Inject;
  import javax.ws.rs.Consumes;
@@ -69,26 +69,26 @@ index cad5f00..8294460 100644
 +        return service.solve();
 +    }
  }
-diff --git a/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/services/UndoingRestServiceBean.java b/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/services/UndoingRestServiceBean.java
+diff --git a/rounds/greatundoing/server/src/main/java/de/markushimmel/merlinhunt/greatundoing/services/UndoingRestServiceBean.java b/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/services/UndoingRestServiceBean.java
 index 8cd83e6..9681127 100644
---- a/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/services/UndoingRestServiceBean.java
-+++ b/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/services/UndoingRestServiceBean.java
+--- a/rounds/greatundoing/server/src/main/java/de/markushimmel/merlinhunt/greatundoing/services/UndoingRestServiceBean.java
++++ b/rounds/greatundoing/server/src/main/java/de/markushimmel/merlinhunt/greatundoing/services/UndoingRestServiceBean.java
 @@ -1,6 +1,7 @@
- package de.markushimmel.merlinhunt.immortalgame.services;
+ package de.markushimmel.merlinhunt.greatundoing.services;
  
  import java.util.ArrayList;
 +import java.util.Collections;
  import java.util.List;
  import java.util.Random;
  
-@@ -10,6 +11,7 @@ import de.markushimmel.merlinhunt.immortalgame.arithmetic.IAdditiveGroup;
- import de.markushimmel.merlinhunt.immortalgame.arithmetic.IField;
- import de.markushimmel.merlinhunt.immortalgame.arithmetic.IVectorSpace;
- import de.markushimmel.merlinhunt.immortalgame.arithmetic.ModularArithmetic;
-+import de.markushimmel.merlinhunt.immortalgame.arithmetic.Vector;
- import de.markushimmel.merlinhunt.immortalgame.transformations.IStuffDoer;
- import de.markushimmel.merlinhunt.immortalgame.transformations.RandomStuffDoer;
- import de.markushimmel.merlinhunt.immortalgame.transformations.RepeatedStuffDoer;
+@@ -10,6 +11,7 @@ import de.markushimmel.merlinhunt.greatundoing.arithmetic.IAdditiveGroup;
+ import de.markushimmel.merlinhunt.greatundoing.arithmetic.IField;
+ import de.markushimmel.merlinhunt.greatundoing.arithmetic.IVectorSpace;
+ import de.markushimmel.merlinhunt.greatundoing.arithmetic.ModularArithmetic;
++import de.markushimmel.merlinhunt.greatundoing.arithmetic.Vector;
+ import de.markushimmel.merlinhunt.greatundoing.transformations.IStuffDoer;
+ import de.markushimmel.merlinhunt.greatundoing.transformations.RandomStuffDoer;
+ import de.markushimmel.merlinhunt.greatundoing.transformations.RepeatedStuffDoer;
 @@ -34,6 +36,78 @@ public class UndoingRestServiceBean {
          return correctAnswer.equals(output);
      }
