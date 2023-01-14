@@ -8,6 +8,8 @@ import java.util.Optional;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+
 import io.quarkus.logging.Log;
 import io.quarkus.runtime.Startup;
 
@@ -16,7 +18,9 @@ import io.quarkus.runtime.Startup;
 public class SolutionCodeProvider {
 
     private static final String SOLUTION_CODE_FALLBACK = "Oh no, the puzzle is broken!";
-    private static final String SOLUTION_CODE_FILE_ENVIRONMENT_VARIABLE = "GREATUNDOING_SOLUTION_CODE_FILE";
+
+    @ConfigProperty(name = "greatundoing.solution.code.file")
+    Optional<String> solutionCodeFile;
 
     private String solutionCode;
 
@@ -30,8 +34,8 @@ public class SolutionCodeProvider {
 
     private Optional<String> getSolutionCode(String solutionFileLocation) {
         try {
-            return Optional.of(Files.readString(Path.of(solutionFileLocation)));
-        } catch (IOException e) {
+            return Optional.of(Files.readAllLines(Path.of(solutionFileLocation)).get(0));
+        } catch (IOException | IndexOutOfBoundsException e) {
             Log.errorf("Unable to read solution code file at %s. Falling back to default solution code.",
                     solutionFileLocation);
             return Optional.empty();
@@ -39,13 +43,10 @@ public class SolutionCodeProvider {
     }
 
     private Optional<String> getSolutionFileLocation() {
-        String location = System.getProperty(SOLUTION_CODE_FILE_ENVIRONMENT_VARIABLE);
-        if (location != null) {
-            return Optional.of(location);
-        } else {
+        if (!solutionCodeFile.isPresent()) {
             Log.error("No solution code file specified! Falling back to default solution code.");
-            return Optional.empty();
         }
+        return solutionCodeFile;
     }
 
     public String getSolutionCode() {
