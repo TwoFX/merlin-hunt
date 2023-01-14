@@ -6,7 +6,7 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
 public class UndoingRestRequest {
 
-    @Schema(required = true, description = "A list containing exactly 100 numbers")
+    @Schema(required = true, description = "A list containing exactly 101 numbers")
     private List<Long> numbers;
 
     public UndoingRestRequest() {

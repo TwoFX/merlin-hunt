@@ -10,6 +10,7 @@ import javax.ws.rs.core.Response.Status;
 
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
+import de.markushimmel.merlinhunt.greatundoing.services.SolutionCodeProvider;
 import de.markushimmel.merlinhunt.greatundoing.services.UndoingRestServiceBean;
 import de.markushimmel.merlinhunt.greatundoing.util.UndoingConstants;
 
@@ -17,7 +18,10 @@ import de.markushimmel.merlinhunt.greatundoing.util.UndoingConstants;
 public class UndoingRestService {
 
     @Inject
-    private UndoingRestServiceBean service;
+    UndoingRestServiceBean service;
+
+    @Inject
+    SolutionCodeProvider solutionCodeProvider;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -33,7 +37,7 @@ public class UndoingRestService {
         if (service.checkNumbers(request.getNumbers())) {
 
             return String.format("Correct! The solution code is %s",
-                    System.getenv().get("MERLIN_HUNT_UNDOING_SECRET"));
+                    solutionCodeProvider.getSolutionCode());
         } else {
             throw new MerlinHuntException(Status.BAD_REQUEST, "Those were the wrong numbers");
         }

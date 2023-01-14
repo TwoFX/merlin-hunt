@@ -7,6 +7,8 @@ secrets:
     file: ../../secrets/judgedaemon_password
   postgres_postgres_password:
     file: ../../secrets/postgres_postgres_password
+  greatundoing_solution_code:
+    file: ../rounds/greatundoing/greatundoing.ans
 
 services:
   registry:
@@ -34,6 +36,10 @@ services:
     image: markushimmel.de:5000/merlinhunt/thegreatundoing/server:latest
     container_name: undoing
     hostname: undoing
+    secrets:
+      - greatundoing_solution_code
+    environment:
+      - GREATUNDOING_SOLUTION_FILE: /run/secrets/greatundoing_solution_code
   mariadb:
     image: mariadb:latest
     container_name: dj-mariadb
