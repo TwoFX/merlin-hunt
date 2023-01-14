@@ -39,7 +39,7 @@ services:
     secrets:
       - greatundoing_solution_code
     environment:
-      GREATUNDOING_SOLUTION_FILE: /run/secrets/greatundoing_solution_code
+      GREATUNDOING_SOLUTION_CODE_FILE: /run/secrets/greatundoing_solution_code
   mariadb:
     image: mariadb:latest
     container_name: dj-mariadb
