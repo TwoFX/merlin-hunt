@@ -35,7 +35,6 @@ public class UndoingRestService {
         }
 
         if (service.checkNumbers(request.getNumbers())) {
-
             return String.format("Correct! The solution code is %s",
                     solutionCodeProvider.getSolutionCode());
         } else {
