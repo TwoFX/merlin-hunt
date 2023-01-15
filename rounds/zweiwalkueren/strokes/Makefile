@@ -1,0 +1,13 @@
+venv: venv/touchfile
+
+strokes.txt: venv
+	. venv/bin/activate; ./strokes.py > $@
+
+venv/touchfile: requirements.txt
+	test -d venv || python3 -m venv venv
+	. venv/bin/activate; pip install -Ur requirements.txt
+	touch venv/touchfile
+
+clean:
+	rm -rf venv strokes.txt
+	find -iname "*.pyc" -delete
