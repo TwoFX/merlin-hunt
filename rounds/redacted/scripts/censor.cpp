@@ -34,21 +34,23 @@ int main(int argc, char **argv) {
 	int w, h, m;
 	cin >> w >> h >> m;
 
-	int x1 = atoi(argv[1]);
-	int y1 = atoi(argv[2]);
-	int x2 = atoi(argv[3]);
-	int y2 = atoi(argv[4]);
+	int y1 = atoi(argv[1]);
+	int x1 = atoi(argv[2]);
+	int y2 = atoi(argv[3]) + y1;
+	int x2 = atoi(argv[4]) + x1;
 
 	cout << s << " " << w << " " << h << " " << m << endl;
-	fora(i, h) fora(j, w) fora(k, 3) {
-		string p;
-		cin >> p;
-		if (i >= x1 && i <= x2 && j >= y1 && j <= y2) {
-			fora(q, sz(p)) cout << 0;
-			cout << " ";
-		} else {
-			cout << p << " ";
+	fora(i, h) {
+		fora(j, w) fora(k, 3) {
+			string p;
+			cin >> p;
+			if (i >= x1 && i <= x2 && j >= y1 && j <= y2) {
+				fora(q, sz(p)) cout << 0;
+				cout << " ";
+			} else {
+				cout << p << " ";
+			}
 		}
+		cout << endl;
 	}
-	cout << endl;
 }
