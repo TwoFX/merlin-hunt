@@ -93,3 +93,24 @@ services:
     hostname: hello
     container_name: hello
     image: markushimmel.de:5000/merlinhunt/hello/server
+  gitlab:
+    image: 'gitlab/gitlab-ce:latest'
+    restart: always
+    hostname: gitlab
+    container_name: gitlab
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'https://gitlab.markushimmel.de'
+        gitlab_rails['gitlab_shell_ssh_port'] = 2222
+        gitlab_rails['lfs_enabled'] = true
+        letsencrypt['enable'] = false
+        nginx['listen_https'] = false
+        nginx['listen_port'] = 80
+        # Add any other gitlab.rb configuration here, each on its own line
+    ports:
+      - '2222:22'
+    volumes:
+      - '/var/lib/gitlab/config:/etc/gitlab'
+      - '/var/lib/gitlab/logs:/var/log/gitlab'
+      - '/var/lib/gitlab/data:/var/opt/gitlab'
+    shm_size: '256m'
