@@ -1,6 +1,6 @@
 PROBLEMNAME := Kleine Hafenrundfahrt
 FLAGNAME := kleinehafenrundfahrt
-SHORTNAME := H
+SHORTNAME := G
 INPUTFILES := input/gummiboot input/irrelevant.txt
 
 include ../../make/round.mk

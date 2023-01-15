@@ -1,6 +1,6 @@
 PROBLEMNAME := The Great Undoing
 FLAGNAME := greatundoing
-SHORTNAME := J
+SHORTNAME := I
 INPUTFILES := input/hint.txt
 
 include ../../make/round.mk

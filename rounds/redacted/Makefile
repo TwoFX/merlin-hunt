@@ -1,4 +1,4 @@
-PROBLEMNAME := [Redaced]
+PROBLEMNAME := [Redacted]
 FLAGNAME := redacted
 SHORTNAME := C
 INPUTFILES := input/TODO.txt

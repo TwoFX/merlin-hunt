@@ -1,6 +1,6 @@
 PROBLEMNAME := Twistly Little Passages
 FLAGNAME := twistylittlepassages
-SHORTNAME := G
+SHORTNAME := H
 INPUTFILES := input/lowercase
 
 include ../../make/round.mk

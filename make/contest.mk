@@ -1,6 +1,8 @@
-.PHONY: clean dj-zip server docker flag zip answer
+.PHONY: clean dj-zip server docker flag zip answer all
 
 export SECRETSUFFIX
+
+all: docker dj-zip assemble
 
 target:
 	mkdir -p target
