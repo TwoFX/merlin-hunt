@@ -10,14 +10,15 @@ parts = [
 
 for perm in permutations(parts):
   p = ["-----BEGIN OPENSSH PRIVATE KEY-----"] + list(perm) + ["nIJw0PtMC6lFmD2FRFZoAAAAHGdpdEBnaXRsYWIubWFya3VzaGltbWVsLmRlOj8B", "-----END OPENSSH PRIVATE KEY-----\n"]
+  attempt = "\n".join(p)
   tf = tempfile.NamedTemporaryFile(mode='w', delete=False)
-  tf.write("\n".join(p))
+  tf.write(attempt)
   tf.close()
 
   status = os.system(f"ssh-keygen -f {tf.name} -y -P \"\"")
   exitcode = os.waitstatus_to_exitcode(status)
 
   if exitcode == 0:
-    print("\n".join(p))
+    print(attempt)
 
-  #os.unlink(tf.name)
+  os.unlink(tf.name)
