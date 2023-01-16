@@ -1,7 +1,7 @@
-From c89bd8ad2cc6422dd150fbd9ddd39181c7957041 Mon Sep 17 00:00:00 2001
+From 7b19470f0e600f37cc49b05bf7fe1b65b2728857 Mon Sep 17 00:00:00 2001
 From: Markus Himmel <markus@himmel-villmar.de>
-Date: Mon, 28 Nov 2022 13:49:45 +0100
-Subject: [PATCH] [greatundoing] solution
+Date: Mon, 16 Jan 2023 18:27:44 +0100
+Subject: [PATCH] Solution
 
 ---
  .../arithmetic/ModularArithmetic.java         |  4 +-
@@ -10,10 +10,10 @@ Subject: [PATCH] [greatundoing] solution
  .../services/UndoingRestServiceBean.java      | 74 +++++++++++++++++++
  4 files changed, 86 insertions(+), 2 deletions(-)
 
-diff --git a/rounds/greatundoing/server/src/main/java/de/markushimmel/merlinhunt/greatundoing/arithmetic/ModularArithmetic.java b/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/arithmetic/ModularArithmetic.java
-index 2eef1fd..3eba4cd 100644
---- a/rounds/greatundoing/server/src/main/java/de/markushimmel/merlinhunt/greatundoing/arithmetic/ModularArithmetic.java
-+++ b/rounds/greatundoing/server/src/main/java/de/markushimmel/merlinhunt/greatundoing/arithmetic/ModularArithmetic.java
+diff --git a/src/main/java/de/markushimmel/merlinhunt/greatundoing/arithmetic/ModularArithmetic.java b/src/main/java/de/markushimmel/merlinhunt/greatundoing/arithmetic/ModularArithmetic.java
+index 9864bc5..9b2d9e3 100644
+--- a/src/main/java/de/markushimmel/merlinhunt/greatundoing/arithmetic/ModularArithmetic.java
++++ b/src/main/java/de/markushimmel/merlinhunt/greatundoing/arithmetic/ModularArithmetic.java
 @@ -47,7 +47,7 @@ public class ModularArithmetic implements IAdditiveGroup<ModularArithmetic>, IFi
          // But I think that it's almost correct, my friends Pierre
          // and Joseph-Louis told me so. Right now, it seems to always
@@ -32,10 +32,10 @@ index 2eef1fd..3eba4cd 100644
      }
  
  }
-diff --git a/rounds/greatundoing/server/src/main/java/de/markushimmel/merlinhunt/greatundoing/arithmetic/Vector.java b/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/arithmetic/Vector.java
-index a0ec604..6e1534b 100644
---- a/rounds/greatundoing/server/src/main/java/de/markushimmel/merlinhunt/greatundoing/arithmetic/Vector.java
-+++ b/rounds/greatundoing/server/src/main/java/de/markushimmel/merlinhunt/greatundoing/arithmetic/Vector.java
+diff --git a/src/main/java/de/markushimmel/merlinhunt/greatundoing/arithmetic/Vector.java b/src/main/java/de/markushimmel/merlinhunt/greatundoing/arithmetic/Vector.java
+index 4b1e84b..d459e96 100644
+--- a/src/main/java/de/markushimmel/merlinhunt/greatundoing/arithmetic/Vector.java
++++ b/src/main/java/de/markushimmel/merlinhunt/greatundoing/arithmetic/Vector.java
 @@ -46,6 +46,10 @@ public class Vector<TScalar extends IAdditiveGroup<TScalar> & IField<TScalar>, T
          return new Vector<>(values.stream().map(IAdditiveGroup::additiveInverse).toList());
      }
@@ -47,10 +47,10 @@ index a0ec604..6e1534b 100644
      @Override
      public int hashCode() {
          final int prime = 31;
-diff --git a/rounds/greatundoing/server/src/main/java/de/markushimmel/merlinhunt/greatundoing/rest/UndoingRestService.java b/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/rest/UndoingRestService.java
-index cad5f00..8294460 100644
---- a/rounds/greatundoing/server/src/main/java/de/markushimmel/merlinhunt/greatundoing/rest/UndoingRestService.java
-+++ b/rounds/greatundoing/server/src/main/java/de/markushimmel/merlinhunt/greatundoing/rest/UndoingRestService.java
+diff --git a/src/main/java/de/markushimmel/merlinhunt/greatundoing/rest/UndoingRestService.java b/src/main/java/de/markushimmel/merlinhunt/greatundoing/rest/UndoingRestService.java
+index 61f6efe..db0070f 100644
+--- a/src/main/java/de/markushimmel/merlinhunt/greatundoing/rest/UndoingRestService.java
++++ b/src/main/java/de/markushimmel/merlinhunt/greatundoing/rest/UndoingRestService.java
 @@ -2,6 +2,7 @@ package de.markushimmel.merlinhunt.greatundoing.rest;
  
  import javax.inject.Inject;
@@ -59,7 +59,7 @@ index cad5f00..8294460 100644
  import javax.ws.rs.POST;
  import javax.ws.rs.Path;
  import javax.ws.rs.Produces;
-@@ -38,4 +39,9 @@ public class UndoingRestService {
+@@ -41,4 +42,9 @@ public class UndoingRestService {
              throw new MerlinHuntException(Status.BAD_REQUEST, "Those were the wrong numbers");
          }
      }
@@ -69,10 +69,10 @@ index cad5f00..8294460 100644
 +        return service.solve();
 +    }
  }
-diff --git a/rounds/greatundoing/server/src/main/java/de/markushimmel/merlinhunt/greatundoing/services/UndoingRestServiceBean.java b/rounds/thegreatundoing/server/src/main/java/de/markushimmel/merlinhunt/immortalgame/services/UndoingRestServiceBean.java
-index 8cd83e6..9681127 100644
---- a/rounds/greatundoing/server/src/main/java/de/markushimmel/merlinhunt/greatundoing/services/UndoingRestServiceBean.java
-+++ b/rounds/greatundoing/server/src/main/java/de/markushimmel/merlinhunt/greatundoing/services/UndoingRestServiceBean.java
+diff --git a/src/main/java/de/markushimmel/merlinhunt/greatundoing/services/UndoingRestServiceBean.java b/src/main/java/de/markushimmel/merlinhunt/greatundoing/services/UndoingRestServiceBean.java
+index f6b656e..c77d9dc 100644
+--- a/src/main/java/de/markushimmel/merlinhunt/greatundoing/services/UndoingRestServiceBean.java
++++ b/src/main/java/de/markushimmel/merlinhunt/greatundoing/services/UndoingRestServiceBean.java
 @@ -1,6 +1,7 @@
  package de.markushimmel.merlinhunt.greatundoing.services;
  
@@ -169,5 +169,5 @@ index 8cd83e6..9681127 100644
          Random random = new Random(ANSWER_SEED);
          List<ModularArithmetic> result = new ArrayList<>(UndoingConstants.SIZE);
 -- 
-2.38.1
+2.39.0
 
