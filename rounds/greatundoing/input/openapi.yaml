@@ -1,0 +1,49 @@
+---
+openapi: 3.0.3
+info:
+  title: the-great-undoing API
+  version: 1.0.0-SNAPSHOT
+servers:
+  - url: undoing.markushimmel.de/
+paths:
+  /:
+    get:
+      tags:
+      - Undoing Rest Service
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+    post:
+      tags:
+      - Undoing Rest Service
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UndoingRestRequest'
+      responses:
+        "200":
+          description: "Congratulations, you solved the puzzle!"
+          content:
+            text/plain:
+              schema:
+                type: string
+        "400":
+          description: Your input was malformed or incorrect
+components:
+  schemas:
+    UndoingRestRequest:
+      required:
+      - numbers
+      type: object
+      properties:
+        numbers:
+          description: A list containing exactly 101 numbers
+          type: array
+          items:
+            format: int64
+            type: integer
