@@ -9,12 +9,20 @@ secrets:
     file: ../../secrets/postgres_postgres_password
   greatundoing_solution_code:
     file: ../rounds/greatundoing/greatundoing.ans
+  helloworld_solution_code:
+    file: ../rounds/helloworld/greatundoing.ans
+  immortalgame_solution_code:
+    file: ../rounds/immortalgame/greatundoing.ans
 
 services:
   immortalgame:
     image: markushimmel.de:5000/merlinhunt/immortalgame/server:latest
     container_name: immortal
     hostname: immortal
+    secrets:
+      - immortalgame_solution_code
+    environment:
+      IMMORTALGAME_SOLUTION_CODE_FILE: /run/secrets/immortalgame_solution_code
   greatundoing:
     image: markushimmel.de:5000/merlinhunt/thegreatundoing/server:latest
     container_name: undoing
@@ -93,6 +101,10 @@ services:
     hostname: hello
     container_name: hello
     image: markushimmel.de:5000/merlinhunt/hello/server
+    secrets:
+      - helloworld_solution_code
+    environment:
+      HELLOWORLD_SOLUTION_CODE_FILE: /run/secrets/helloworld_solution_code
   gitlab:
     image: 'gitlab/gitlab-ce:latest'
     restart: always

@@ -1,5 +1,6 @@
 package de.markushimmel.merlinhunt.immortalgame;
 
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -22,6 +23,9 @@ public class ImmortalRestService {
 
     private static final String SECRET = "CBZV4QGNZZFXMG5AQU4EKHEJG244CO6JNJESMRF3JMHHQZCU5XSSD7PA6INB2DYF";
 
+    @Inject
+    SolutionCodeProvider solutionCodeProvider;
+
     @Path("/{code}")
     @GET
     @Produces(MediaType.TEXT_PLAIN)
@@ -37,7 +41,7 @@ public class ImmortalRestService {
         Log.infof("Received code %s. Verdict: %s", code, successful ? "correct" : "incorrect");
 
         if (successful) {
-            return "Correct! The solution code is 'sdfkgjhweifdefjkeshfuierwfaw'";
+            return String.format("Correct! The solution code is %s", solutionCodeProvider.getSolutionCode());
         } else {
             return "Incorrect!";
         }

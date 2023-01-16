@@ -1,5 +1,6 @@
 package de.markushimmel.merlinhunt.helloworld;
 
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -8,6 +9,9 @@ import javax.ws.rs.core.MediaType;
 
 @Path("/")
 public class GreetingRestService {
+
+    @Inject
+    SolutionCodeProvider solutionCodeProvider;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -20,7 +24,7 @@ public class GreetingRestService {
         String result = String.format("Hello, %s!\n", request.getName());
 
         if (request.getName().toLowerCase().equals("world")) {
-            result += "\nThe solution code is: \"Wow, what a lovely day it is!\"\n";
+            result += String.format("\nThe solution code is: %s\n", solutionCodeProvider.getSolutionCode());
         }
 
         return result;
