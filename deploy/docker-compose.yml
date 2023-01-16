@@ -10,9 +10,9 @@ secrets:
   greatundoing_solution_code:
     file: ../rounds/greatundoing/greatundoing.ans
   helloworld_solution_code:
-    file: ../rounds/helloworld/greatundoing.ans
+    file: ../rounds/helloworld/helloworld.ans
   immortalgame_solution_code:
-    file: ../rounds/immortalgame/greatundoing.ans
+    file: ../rounds/immortalgame/immortalgame.ans
 
 services:
   immortalgame:
