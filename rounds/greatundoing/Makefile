@@ -1,7 +1,7 @@
 PROBLEMNAME := The Great Undoing
 FLAGNAME := greatundoing
 SHORTNAME := I
-INPUTFILES := input/ring input/n.elapamoipy
+INPUTFILES := input/ring
 
 .PHONY: push
 
@@ -18,9 +18,6 @@ push: build
 
 build/client: client/client.nim
 	nim compile -d:release -o:$@ $<
-
-input/n.elapamoipy: input/openapi.yaml scripts/shuffle.py
-	scripts/shuffle.py input/openapi.yaml $@
 
 input/ring: build/client
 	cp $< $@
