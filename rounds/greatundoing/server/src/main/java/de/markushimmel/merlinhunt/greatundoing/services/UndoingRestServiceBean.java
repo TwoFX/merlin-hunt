@@ -30,7 +30,7 @@ public class UndoingRestServiceBean {
 
         List<ModularArithmetic> output = transform(vector, ModularArithmetic.of(0));
         List<ModularArithmetic> correctAnswer = generateCorrectAnswer();
-        Log.infof("Recieved attempt %s, resulting numbers %s, correct answer is %s", numbers, output, correctAnswer);
+        Log.infof("Received attempt %s, resulting numbers %s, correct answer is %s", numbers, output, correctAnswer);
         return correctAnswer.equals(output);
     }
 
