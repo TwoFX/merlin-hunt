@@ -17,6 +17,20 @@ public class FullProgramGenerator {
 
             new BrainfuckProgramGenerator(), //
             new JavaProgramGenerator(), //
+
+            new CPlusPlusProgramGenerator(), //
+            new CPlusPlusProgramGenerator(), //
+            new CPlusPlusProgramGenerator(), //
+            new CPlusPlusProgramGenerator(), //
+
+            new CPlusPlusProgramGenerator(), //
+            new CPlusPlusProgramGenerator(), //
+            new CPlusPlusProgramGenerator(), //
+            new CPlusPlusProgramGenerator(), //
+            new CPlusPlusProgramGenerator(), //
+            new CPlusPlusProgramGenerator(), //
+            new CPlusPlusProgramGenerator(), //
+            new CPlusPlusProgramGenerator() //
     );
 
     private static final List<String> LEAVES = List.of("a", "b", "c", "d", "e", "f", "g", "h", "a", "b", "c", "d", "e",
