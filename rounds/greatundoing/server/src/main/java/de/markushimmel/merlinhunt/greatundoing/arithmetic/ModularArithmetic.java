@@ -47,7 +47,7 @@ public class ModularArithmetic implements IAdditiveGroup<ModularArithmetic>, IFi
         // But I think that it's almost correct, my friends Pierre
         // and Joseph-Louis told me so. Right now, it seems to always
         // return the number 1... I've disabled the test for now.
-        return of(ArithmeticUtil.powMod(value, MODULUS - 2, MODULUS));
+        return of(ArithmeticUtil.powMod(value, MODULUS - 1, MODULUS));
     }
 
     @Override
@@ -89,7 +89,7 @@ public class ModularArithmetic implements IAdditiveGroup<ModularArithmetic>, IFi
 
     @Override
     public String toString() {
-        return value + "";
+        return value + "m";
     }
 
 }
