@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+<title>Merlin Hunt</title>
+</head>
+<body>
+<h1>Merlin Hunt</h1>
+
+<p>The Merlin Hunt is a virtual puzzle hunt for people who know how to program.
+It consists of a series of little puzzles to be solved in a team of two or three
+people. Most of the puzzles will require programming knowledge in one way or another.
+Participation is open to everyone who likes puzzles.</p>
+
+<p>It is written and organized by Markus Himmel.</p>
+
+<p>The canonical location of this document is <a href="https://static.markushimmel.de/information.html">https://static.markushimmel.de/information.html</a>.</p>
+
+<h2>General information and schedule</h2>
+
+<p>The main medium of communication is Discord. Every participant should join the following
+Discord server:</p>
+
+<blockquote>
+	<a href="https://discord.gg/ncmky4ygDc">https://discord.gg/ncmky4ygDc</a>
+</blockquote>
+
+<h3>Schedule</h3>
+<p>The date of the contest is <b>February 25, 2023</b>. The schedule is as follows (all times in CET):</p>
+<table>
+	<thead>
+		<tr><th>Time</th><th>Event</th></tr>
+	</thead>
+	<tbody>
+		<tr><td>9:45</td><td>Last info meeting on Discord</td></tr>
+		<tr><td>10:00</td><td>Start of contest</td></tr>
+		<tr><td>00:00</td><td>End of contest</td></tr>
+		<tr><td>00:05</td><td>Award ceremony on Discord</td></tr>
+	</tbody>
+</table>
+<p>Of course, it is not mandatory to stay until the end. Everyone is welcome to
+participate for as long as they like and take breaks as they please.</p>
+
+<h3>Contest location</h3>
+<p>The puzzle hunt can be completely played online using a computer. All official
+communication will be via Discord.
+It is recommended that teams meet in one place to participate.</p>
+<p>There will be a limited amount of space for teams to participate onsite in Karlsruhe (just for the fun of it).
+If you would like to participate onsite, please indicate this during sign-up. If
+there are more interested teams than there is space in my flat, I will decide which
+teams are allowed to come.</p>
+<p>If you participate onsite, please bring a pair of headphones!</p>
+
+<h3>Teams and registration</h3>
+
+<p>Participants should participate in teams of two or three people. Forming larger
+teams is possible but not recommended. Participating alone is also possible but
+strongly discouraged.</p>
+
+<p>To register a team, send me (Discord handle: TwoFx#6343) a private
+message on Discord.</p>
+
+<p>Please include the following information:</p>
+<ul>
+	<li>Your team name</li>
+	<li>The names and Discord handles of all team members</li>
+	<li>Which team member is the captain</li>
+	<li>Whether or not you would like to participate onsite in Karlsruhe</li>
+</ul>
+
+<p>While it will be possible to sign up right until the contest starts, please
+sign up as early as possible.</p>
+
+<p>If you do not have a team, feel free to message me and I will try to match you up
+with other individuals who are looking for a team.</p>
+
+<h2>Competition format</h2>
+<p>The puzzle hunt is structured as an ordered series of tasks. A task is a
+zip file containing the following things:</p>
+<ul>
+	<li>The <i>flag</i> of the previous task: a file with the extension
+		<code>.flag</code> that you should upload to DOMJudge (see below) to obtain
+		points for the previous problem.</li>
+	<li>One or more files that make up the puzzle that you have to solve for this
+		task.</li>
+	<li>The next task, as an encrypted zip file with extension <code>.zip.gpg</code>.
+		The solution of the task is the passphrase needed to decrypt the next task.</li>
+</ul>
+
+<p>The initial zip file containing the first task will be distributed via Discord
+shortly before the contest. The password to decrypt the task will be
+distributed via Discord as soon as the contest starts. You should download the
+initial zip file in advance as it will be quite large.</p>
+
+<h3>DOMJudge</h3>
+<p>Each team's progress is tracked via an online system called DOMJudge. The URL of
+the DOMJudge system is</p>
+<blockquote>
+	<a href="https://domjudge.markushimmel.de/">https://domjudge.markushimmel.de/</a>.
+</blockquote>
+
+<p>As soon as you successfully decrypt a zip file, you should upload the flag
+contained in the archive to DOMJudge in order to obtain points for the task you
+just solved.</p>
+
+<p>You will obtain credentials for DOMJudge after signing up. The same credentials
+will work for the practice session and the main contest.</p>
+
+<p>On the DOMJudge page, there will be a live ranking of all participating teams.
+The teams will be sorted using ICPC scoring rules, which basically means that
+to appear at the top of the leaderboard, you should solve many puzzles and do
+so quickly and with few hints.</p>
+
+<h3>Example</h3>
+<p>Here is an example of how the process of participating in the puzzle hunt looks.
+You will be able to practice the process during the practice session; see below.</p>
+
+<ul>
+	<li>Before the contest, you download the first task. It is a zip file called
+		<code>gettingstarted.zip</code>. Inside the zip archive, there are two files:
+		<code>README.md</code> and <code>thefirsttask.zip.gpg</code>. The readme file tells
+		you that you will receive the password to decrypt the encrypted file once
+		the contest has started.</li>
+	<li>As soon as the contest starts, the password for <code>thefirsttask.zip.gpg</code>
+		is announced on Discord. You decrypt the archive and find three files inside:
+		<code>gettingstarted.flag</code>, <code>puzzle.txt</code> and <code>thesecondtask.zip.gpg</code>.</li>
+	<li>You upload <code>gettingstarted.flag</code> to DOMJudge and receive one point.</li>
+	<li>You solve the puzzle contained in <code>puzzle.txt</code>. The solution is the
+		sentence &ldquo;Elephants are larger than pixels&rdquo;.</li>
+	<li>You use this phrase to decrypt <code>thesecondtask.zip.gpg</code> and find
+		four files inside the archive: <code>thefirsttask.flag</code>, <code>secondpuzzle.txt</code>,
+		<code>secondpuzzle.jpg</code> and <code>thethirdtask.zip.gpg</code>.</li>
+	<li>You upload <code>thefirsttask.flag</code> to DOMJudge and receive one point.</li>
+	<li>You solve the puzzle contained in <code>secondpuzzle.*</code>, use this to decrypt the
+		next problem archive, upload the flag, solve the next puzzle, and so on.</li>
+</ul>
+
+<h3>Hints</h3>
+<p>If you get stuck on a puzzle, it is possible to request a hint. You may only
+request a hint if you have been working on a puzzle for at least 30 minutes
+(as measured by the last successful submission on DOMJudge).</p>
+
+<p>To request a hint, you should do two things:</p>
+<ol>
+	<li>In DOMJudge, submit the file \texttt{request-hint.flag}, which you received
+		as part of the initial zip file, as an attempt for the puzzle you
+		want to request a hint for. You will receive a verdict of Wrong Answer.</li>
+	<li>Send me a private message on Discord.</li>
+</ol>
+
+<p>I will then join you for a quick voice call to get you un-stuck. If you solve
+the puzzle later, you will receive a time penalty of 20 minutes for each hint
+you needed.</p>
+
+<h2>Rules and advice</h2>
+<ul>
+	<li>Before the contest, you should make sure that you are able to decrypt
+		files that were encrypted using GnuPG. On Linux, this is accomplished
+		using the command-line tool <code>gpg</code>. On Debian, Ubuntu, Mint and derivatives, you can
+		install it by saying
+		<pre>
+			sudo apt install gnupg
+		</pre>
+		You can decrypt a file using the invocation
+		<pre>
+			gpg -d task.zip.gpg > task.zip
+		</pre>
+		There are also GUI tools available on Windows and Linux.</li>
+	<li>It is strongly recommended that at least one team member has access
+		to a reasonably powerful Linux machine or VM. As long as it's not a Raspberry Pi, you're probably fine.</li>
+	<li>Using multiple computers per team and using the internet is permitted.</li>
+	<li>After solving a puzzle, you should know exactly what the solution to
+		the puzzle is. Do not try to brute force the passphrase, even if you
+		believe that you have reduced the number of possible passphrases to a
+		small number.</li>
+	<li>Some puzzles will require interacting with externally hosted services.
+		Please be considerate and do not spam them with a large number of automated
+		requests.</li>
+	<li>The name of a puzzle is part of the puzzle. The full name of each puzzle
+		can be viewed in the DOMJudge submit dialog.</li>
+</ul>
+
+<h2>Practice session</h2>
+<p>There will be a practice session to test your understanding of the contest format and
+get familiar with <code>gpg</code>, DOMJudge and so on. It will work just like the real
+contest, except that the problems are uninteresting dummy problems and you will have
+multiple days to participate at your leisure.</p>
+
+<p>Participation in the practice session is optional but recommended.
+You can spend as much or as little time as you like
+on the practice session, but an hour should be more than enough.</p>
+
+<p>The practice session will run
+from February 10 to February 24. The problem package and initial passphrase for the practice session
+will be made available via Discord.</p>
+
+<h2>Extended contest</h2>
+<p>After the contest has ended, the contest infrastructure will remain accessible for
+a few more weeks or months. There will be an extended contest in DOMJudge so that you can
+continue solving the puzzles past the end of the contest if you wish.</p>
+</body>
+</html>
