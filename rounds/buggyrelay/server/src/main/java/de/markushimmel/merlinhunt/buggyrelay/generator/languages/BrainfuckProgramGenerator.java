@@ -9,7 +9,7 @@ public class BrainfuckProgramGenerator implements IProgramGenerator {
 
     @Override
     public String generateProgram(String standardOutput, String standardError, boolean withSyntaxError) {
-        String output = String.format("fd1: %s\n\n fd2: %s\n", standardOutput, standardError);
+        String output = String.format("out: %s\n\n err: %s\n", standardOutput, standardError);
         String program = generateProgram(output);
 
         if (withSyntaxError) {
