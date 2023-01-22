@@ -13,7 +13,7 @@ public class GenerateCommand implements Runnable {
     boolean syntaxErrors = true;
 
     @Inject
-    private FullProgramGenerator generator;
+    FullProgramGenerator generator;
 
     @Override
     public void run() {

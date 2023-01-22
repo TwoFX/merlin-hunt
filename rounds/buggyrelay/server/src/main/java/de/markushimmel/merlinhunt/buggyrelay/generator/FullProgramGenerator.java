@@ -4,29 +4,34 @@ import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 
+import de.markushimmel.merlinhunt.buggyrelay.generator.languages.BrainfuckProgramGenerator;
 import de.markushimmel.merlinhunt.buggyrelay.generator.languages.CPlusPlusProgramGenerator;
+import de.markushimmel.merlinhunt.buggyrelay.generator.languages.FullyEscapedJavaProgramGenerator;
+import de.markushimmel.merlinhunt.buggyrelay.generator.languages.JavaProgramGenerator;
+import de.markushimmel.merlinhunt.buggyrelay.generator.languages.LLVMBytecodeProgramGenerator;
+import de.markushimmel.merlinhunt.buggyrelay.generator.languages.PythonBase64ProgramGenerator;
 
 @ApplicationScoped
 public class FullProgramGenerator {
 
     private static final List<IProgramGenerator> ALL_GENERATORS = List.of( //
-            // new BrainfuckProgramGenerator(), //
+            new BrainfuckProgramGenerator(), //
 
-            // new PythonBase64ProgramGenerator(), //
-            // new LLVMBytecodeProgramGenerator(), //
+            new PythonBase64ProgramGenerator(), //
+            new LLVMBytecodeProgramGenerator(), //
 
-            // new CPlusPlusProgramGenerator(), //
-            // new CPlusPlusProgramGenerator(), //
-            // new CPlusPlusProgramGenerator(), //
-            // new CPlusPlusProgramGenerator(), //
+            new CPlusPlusProgramGenerator(), //
+            new CPlusPlusProgramGenerator(), //
+            new CPlusPlusProgramGenerator(), //
+            new CPlusPlusProgramGenerator(), //
 
-            // new FullyEscapedJavaProgramGenerator(), //
-            // new CPlusPlusProgramGenerator(), //
-            // new CPlusPlusProgramGenerator(), //
-            // new JavaProgramGenerator(), //
-            // new CPlusPlusProgramGenerator(), //
-            // new CPlusPlusProgramGenerator(), //
-            // new CPlusPlusProgramGenerator(), //
+            new FullyEscapedJavaProgramGenerator(), //
+            new CPlusPlusProgramGenerator(), //
+            new CPlusPlusProgramGenerator(), //
+            new JavaProgramGenerator(), //
+            new CPlusPlusProgramGenerator(), //
+            new CPlusPlusProgramGenerator(), //
+            new CPlusPlusProgramGenerator(), //
             new CPlusPlusProgramGenerator() //
     );
 
