@@ -16,4 +16,4 @@ input/2then1: build/exported.tar
 	cp $< $@
 
 clean::
-	rm -r build/ input/2then1
+	rm -rf build/ input/2then1

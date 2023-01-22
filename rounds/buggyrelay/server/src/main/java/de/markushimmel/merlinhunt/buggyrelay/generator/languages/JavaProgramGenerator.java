@@ -3,30 +3,20 @@ package de.markushimmel.merlinhunt.buggyrelay.generator.languages;
 import java.nio.charset.StandardCharsets;
 
 import de.markushimmel.merlinhunt.buggyrelay.generator.IProgramGenerator;
+import io.quarkus.qute.CheckedTemplate;
+import io.quarkus.qute.TemplateInstance;
 
 public class JavaProgramGenerator implements IProgramGenerator {
 
+    @CheckedTemplate
+    public static class Templates {
+        public static native TemplateInstance program(String standardOutputBytes, String standardErrorBytes,
+                boolean withSyntaxError);
+    }
+
     @Override
     public String generateProgram(String standardOutput, String standardError, boolean withSyntaxError) {
-        return String.format("""
-                import java.nio.charset.Charset;
-                import java.nio.charset.StandardCharsets;
-
-                public class Program {
-
-                    private static final byte[] firstBytes = new byte[] { %s };
-                    private static final byte[] secondBytes = new byte[] { %s };
-
-                    public void main(%s) {
-
-                        Charset charset = StandardCharsets.UTF_%s;
-
-                        System.out.println(new String(firstBytes, charset));
-                        System.err.println(new String(secondBytes, charset));
-                    }
-                }""", formatBytes(standardOutput), formatBytes(standardError), withSyntaxError ? "" : "String[] args",
-                withSyntaxError ? "16" : "8");
-
+        return Templates.program(formatBytes(standardOutput), formatBytes(standardError), withSyntaxError).render();
     }
 
     private String formatBytes(String input) {

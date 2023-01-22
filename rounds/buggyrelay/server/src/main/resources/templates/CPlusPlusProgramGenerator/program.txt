@@ -1,0 +1,4 @@
+int main() {
+    std::cout << "{standardOutput}" {#if withSyntaxError}>>{#else}<<{/if} std::endl;
+    std::cerr << "{standardError}" << std::endl;
+}

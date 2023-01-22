@@ -4,37 +4,34 @@ import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 
-import de.markushimmel.merlinhunt.buggyrelay.generator.languages.BrainfuckProgramGenerator;
 import de.markushimmel.merlinhunt.buggyrelay.generator.languages.CPlusPlusProgramGenerator;
-import de.markushimmel.merlinhunt.buggyrelay.generator.languages.FullyEscapedJavaProgramGenerator;
-import de.markushimmel.merlinhunt.buggyrelay.generator.languages.JavaProgramGenerator;
 
 @ApplicationScoped
 public class FullProgramGenerator {
 
     private static final List<IProgramGenerator> ALL_GENERATORS = List.of( //
-            new FullyEscapedJavaProgramGenerator(), //
+            // new BrainfuckProgramGenerator(), //
 
-            new BrainfuckProgramGenerator(), //
-            new JavaProgramGenerator(), //
+            // new PythonBase64ProgramGenerator(), //
+            // new LLVMBytecodeProgramGenerator(), //
 
-            new CPlusPlusProgramGenerator(), //
-            new CPlusPlusProgramGenerator(), //
-            new CPlusPlusProgramGenerator(), //
-            new CPlusPlusProgramGenerator(), //
+            // new CPlusPlusProgramGenerator(), //
+            // new CPlusPlusProgramGenerator(), //
+            // new CPlusPlusProgramGenerator(), //
+            // new CPlusPlusProgramGenerator(), //
 
-            new CPlusPlusProgramGenerator(), //
-            new CPlusPlusProgramGenerator(), //
-            new CPlusPlusProgramGenerator(), //
-            new CPlusPlusProgramGenerator(), //
-            new CPlusPlusProgramGenerator(), //
-            new CPlusPlusProgramGenerator(), //
-            new CPlusPlusProgramGenerator(), //
+            // new FullyEscapedJavaProgramGenerator(), //
+            // new CPlusPlusProgramGenerator(), //
+            // new CPlusPlusProgramGenerator(), //
+            // new JavaProgramGenerator(), //
+            // new CPlusPlusProgramGenerator(), //
+            // new CPlusPlusProgramGenerator(), //
+            // new CPlusPlusProgramGenerator(), //
             new CPlusPlusProgramGenerator() //
     );
 
-    private static final List<String> LEAVES = List.of("a", "b", "c", "d", "e", "f", "g", "h", "a", "b", "c", "d", "e",
-            "f", "g", "h");
+    private static final List<String> LEAVES = List.of("I", "n", "c", "o", "m", "p", "r", "e", "h", "e", "n", "s", "i",
+            "b", "l", "e");
 
     public String generateFinalProgram(boolean syntaxErrors) {
         return get(0, syntaxErrors);
@@ -45,9 +42,9 @@ public class FullProgramGenerator {
             return LEAVES.get(index - ALL_GENERATORS.size());
         }
 
-        String leftChild = get(2 * index + 1, syntaxErrors);
-        String rightChild = get(2 * index + 2, syntaxErrors);
-        return ALL_GENERATORS.get(index).generateProgram(leftChild, rightChild, syntaxErrors);
+        String standardOutput = get(2 * index + 2, syntaxErrors);
+        String standardError = get(2 * index + 1, syntaxErrors);
+        return ALL_GENERATORS.get(index).generateProgram(standardOutput, standardError, syntaxErrors);
     }
 
 }
