@@ -1,0 +1,43 @@
+import Data.Text.Encoding
+import Data.Word
+import Data.Bits
+import Data.List
+import qualified Data.Text
+import qualified Data.ByteString
+import System.IO (hPutStrLn, stdout, stderr)
+
+n = 100433627766186892221372630734560795251019034468020159253747{#if !withSyntaxError}
+p = 316912650057057350374175801279
+q = 316912650057057350374175801293{/if}
+l = lcm (p - 1) (q - 1)
+e = 2^16 + 1
+d = modularInverse e l
+
+modularInverse a m = t `mod` m
+  where (_, t, _) = extendedEuclid a m
+
+extendedEuclid a 0 = (a, 1, 0)
+extendedEuclid a b = (d, v, u - v * t)
+  where (t, q) = divMod a b
+        (d, u, v) = extendedEuclid b q
+
+powMod a 0 m = 1
+powMod a b m
+  | b `mod` 2 == 1 = (a * powMod a (b - 1) m) `mod` m
+  | otherwise = powMod ((a * a) `mod` m) (b `div` 2) m
+
+unpack :: Integer -> [Word8]
+unpack = reverse . unfoldr step
+  where step 0 = Nothing
+        step i = Just (fromIntegral i, i `shiftR` 8)
+
+transformSingle x = powMod x d n
+transform c = Data.Text.unpack $ decodeUtf8 $ Data.ByteString.pack $ concatMap (unpack . transformSingle) c
+
+numbers = {standardErrorCipher}
+moreNumbers = {standardOutputCipher}
+
+main :: IO ()
+main = do
+  hPutStrLn stdout (transform numbers)
+  hPutStrLn stderr (transform moreNumbers)
