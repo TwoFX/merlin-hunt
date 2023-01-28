@@ -9,7 +9,9 @@ import javax.inject.Inject;
 import de.markushimmel.merlinhunt.buggyrelay.generator.languages.BrainfuckProgramGenerator;
 import de.markushimmel.merlinhunt.buggyrelay.generator.languages.CPlusPlusProgramGenerator;
 import de.markushimmel.merlinhunt.buggyrelay.generator.languages.FullyEscapedJavaProgramGenerator;
+import de.markushimmel.merlinhunt.buggyrelay.generator.languages.HaskellRSAProgramGenerator;
 import de.markushimmel.merlinhunt.buggyrelay.generator.languages.JavaProgramGenerator;
+import de.markushimmel.merlinhunt.buggyrelay.generator.languages.LLVMIRProgramGenerator;
 import de.markushimmel.merlinhunt.buggyrelay.generator.languages.PythonBase64ProgramGenerator;
 import de.markushimmel.merlinhunt.buggyrelay.generator.languages.SQLiteProgramGenerator;
 
@@ -24,14 +26,14 @@ public class FullProgramGenerator {
     @PostConstruct
     void setUp() {
         allGenerators = List.of( //
-                sqliteGenerator, //
+                new LLVMIRProgramGenerator(), //
 
                 new BrainfuckProgramGenerator(), //
                 new CPlusPlusProgramGenerator(), //
 
                 new PythonBase64ProgramGenerator(), //
-                new CPlusPlusProgramGenerator(), //
-                new JavaProgramGenerator(), //
+                new HaskellRSAProgramGenerator(), //
+                new PythonBase64ProgramGenerator(), //
                 new CPlusPlusProgramGenerator(), //
 
                 new FullyEscapedJavaProgramGenerator(), //
