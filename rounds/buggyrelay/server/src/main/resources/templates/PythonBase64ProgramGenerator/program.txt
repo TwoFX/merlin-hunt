@@ -19,7 +19,7 @@ def decode(s):
       else:
         k = k + alph.index(c)
     for i in range(nc):
-      ans.append((k >> (8 * ({#if withSyntaxError}3{#else}2{/if} - i))) % 256)
+      ans.append((k >> (8 * ({#if errors}3{#else}2{/if} - i))) % 256)
   return bytearray(ans)
 
 print(decode('{standardError}').decode('utf-8'), file=sys.stderr)

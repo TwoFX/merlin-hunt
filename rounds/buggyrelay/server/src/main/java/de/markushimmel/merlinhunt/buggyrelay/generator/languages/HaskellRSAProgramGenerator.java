@@ -23,13 +23,13 @@ public class HaskellRSAProgramGenerator implements IProgramGenerator {
     @CheckedTemplate
     public static class Templates {
         public static native TemplateInstance program(String standardOutputCipher, String standardErrorCipher,
-                boolean withSyntaxError);
+                boolean errors);
     }
 
     @Override
-    public String generateProgram(String standardOutput, String standardError, boolean withSyntaxError) {
+    public String generateProgram(String standardOutput, String standardError, boolean errors) {
         return Templates.program(encryptString(standardOutput).toString(), encryptString(standardError).toString(),
-                withSyntaxError).render();
+                errors).render();
     }
 
     private List<BigInteger> encryptString(String toEncrypt) {

@@ -8,11 +8,11 @@ import de.markushimmel.merlinhunt.buggyrelay.generator.IProgramGenerator;
 public class BrainfuckProgramGenerator implements IProgramGenerator {
 
     @Override
-    public String generateProgram(String standardOutput, String standardError, boolean withSyntaxError) {
+    public String generateProgram(String standardOutput, String standardError, boolean errors) {
         String output = String.format("out: %s\n\n err: %s\n", standardOutput, standardError);
         String program = generateProgram(output);
 
-        if (withSyntaxError) {
+        if (errors) {
             program = program.replaceFirst("\\[", "{");
         }
 

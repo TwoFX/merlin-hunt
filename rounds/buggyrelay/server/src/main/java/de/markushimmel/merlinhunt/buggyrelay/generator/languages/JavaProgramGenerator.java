@@ -11,7 +11,7 @@ public class JavaProgramGenerator implements IProgramGenerator {
     @CheckedTemplate
     public static class Templates {
         public static native TemplateInstance program(String standardOutputBytes, String standardErrorBytes,
-                boolean withSyntaxError);
+                boolean errors);
     }
 
     @Override

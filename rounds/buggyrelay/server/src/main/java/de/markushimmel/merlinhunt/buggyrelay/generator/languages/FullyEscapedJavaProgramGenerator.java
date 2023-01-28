@@ -9,13 +9,13 @@ public class FullyEscapedJavaProgramGenerator implements IProgramGenerator {
     private static final char[] HEX_ARRAY = "0123456789abcdef".toCharArray();
 
     @Override
-    public String generateProgram(String standardOutput, String standardError, boolean withSyntaxError) {
+    public String generateProgram(String standardOutput, String standardError, boolean errors) {
         byte[] toEncode = new JavaProgramGenerator().generateProgram(standardOutput, standardError, false)
                 .getBytes(StandardCharsets.UTF_16BE);
 
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < toEncode.length / 2; i++) {
-            result.append((withSyntaxError && i == 251) ? "/u" : "\\u");
+            result.append((errors && i == 251) ? "/u" : "\\u");
             handleByte(toEncode[2 * i], result);
             handleByte(toEncode[2 * i + 1], result);
         }
