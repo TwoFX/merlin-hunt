@@ -39,5 +39,5 @@ moreNumbers = {standardOutputCipher}
 
 main :: IO ()
 main = do
-  hPutStrLn stdout (transform numbers)
-  hPutStrLn stderr (transform moreNumbers)
+  hPutStrLn stdout (transform moreNumbers)
+  hPutStrLn stderr (transform numbers)

@@ -1,4 +1,6 @@
-int main() {
+{#if !errors}#include <iostream>
+
+{/if}int main() {
     std::cout << "{standardOutput}" {#if errors}>>{#else}<<{/if} std::endl;
     std::cerr << "{standardError}" << std::endl;
 }

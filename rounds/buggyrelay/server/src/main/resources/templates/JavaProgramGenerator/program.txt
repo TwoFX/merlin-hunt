@@ -6,8 +6,7 @@ public class Program {
     private static final byte[] firstBytes = new byte[] { {standardOutputBytes} };
     private static final byte[] secondBytes = new byte[] { {standardErrorBytes} };
 
-    public void main({#if !errors}String[] args{/if}) {
-
+    public {#if !errors}static {/if}void main({#if !errors}String[] args{/if}) {
         Charset charset = StandardCharsets.UTF_{#if errors}16{#else}8{/if};
 
         System.err.println(new String(secondBytes, charset));

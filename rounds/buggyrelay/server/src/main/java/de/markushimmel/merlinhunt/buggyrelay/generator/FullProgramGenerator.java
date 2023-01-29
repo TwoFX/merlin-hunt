@@ -1,6 +1,8 @@
 package de.markushimmel.merlinhunt.buggyrelay.generator;
 
+import java.util.ArrayDeque;
 import java.util.List;
+import java.util.Queue;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
@@ -38,18 +40,18 @@ public class FullProgramGenerator {
                 new HaskellRSAProgramGenerator(), //
                 new PythonRarePackageProgramGenerator(), //
 
-                new PythonBase64ProgramGenerator(), //
                 new JavaProgramGenerator(), //
+                new PythonBase64ProgramGenerator(), //
                 new FullyEscapedJavaProgramGenerator() //
         );
     }
 
-    private static final List<String> LEAVES = List.of(
-            "Solution code is concatenation of all words in the correct order with single space in between",
+    private static final Queue<String> LEAVES = new ArrayDeque<>(List.of(
+            "Solution code is concatenation of all ten words in the correct order with single space in between",
             "Indispensability", "Noncomprehensive",
             "Procrastinations",
             "Thermoelectrical", "Incomprehensible", "Inconclusiveness", "Internationalize", "Irresponsibility",
-            "Journalistically", "Mispronunciation");
+            "Journalistically", "Mispronunciation"));
 
     public String generateFinalProgram(boolean errors) {
         return get(0, errors);
@@ -57,11 +59,11 @@ public class FullProgramGenerator {
 
     private String get(int index, boolean errors) {
         if (index >= allGenerators.size()) {
-            return LEAVES.get(index - allGenerators.size());
+            return LEAVES.poll();
         }
 
-        String standardOutput = get(2 * index + 2, errors);
         String standardError = get(2 * index + 1, errors);
+        String standardOutput = get(2 * index + 2, errors);
         return allGenerators.get(index).generateProgram(standardOutput, standardError, errors);
     }
 
