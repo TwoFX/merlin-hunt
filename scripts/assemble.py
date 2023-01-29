@@ -1,6 +1,11 @@
 #!/bin/env python3
 import sys, os
 
+def read_answer(name):
+  with open(f'answers/{name}.ans', 'r') as f:
+    ans = f.readlines()
+    return ans[0].strip()
+
 def system(command):
   print(command)
   os.system(command)
@@ -18,7 +23,8 @@ for index in range(len(rounds) - 1, -1, -1):
 
   # Encrypt the next
   to_encrypt = nexts[index]
-  system(f"xargs -0 -I % gpg -c --batch --passphrase \"%\" {to_encrypt} < answers/{cur}.ans")
+  answer = read_answer(cur)
+  system(f'gpg -c --batch --passphrase "{answer}" {to_encrypt}')
 
   # Add to archive
   zipadd(probfile, to_encrypt + ".gpg")
