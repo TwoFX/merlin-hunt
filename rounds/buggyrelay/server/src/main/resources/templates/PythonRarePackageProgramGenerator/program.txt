@@ -1,0 +1,8 @@
+import sys
+from flatten_any_dict_iterable_or_whatsoever import fla_tu
+
+d1 = {standardOutputDict}
+d2 = {standardErrorDict}
+
+print("".join(map(lambda x: x[{#if errors}1{#else}0{/if}], fla_tu(d1))))
+print("".join(map(lambda x: x[{#if errors}1{#else}0{/if}], fla_tu(d2))), file=sys.stderr)

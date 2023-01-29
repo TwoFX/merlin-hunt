@@ -1,0 +1,21 @@
+def get_bit(unpacked, pos)
+  return pos + 1, ((unpacked[pos / 8] >> (7 - (pos % 8))) & 1) == 1
+end
+
+def decode_single(unpacked, pos)
+{decoder}
+end
+
+def decode(packed, bitlength)
+  unpacked = packed.unpack('m*')[0].unpack('C*')
+  pos = 0
+  ans = ""
+  while pos < bitlength
+    pos, c = decode_single(unpacked, pos)
+    ans += c
+  end
+  return ans
+end
+
+STDERR.puts decode("{standardError}", {standardErrorBitLength})
+STDOUT.puts decode("{standardOutput}", {standardOutputBitLength})

@@ -13,6 +13,8 @@ import de.markushimmel.merlinhunt.buggyrelay.generator.languages.HaskellRSAProgr
 import de.markushimmel.merlinhunt.buggyrelay.generator.languages.JavaProgramGenerator;
 import de.markushimmel.merlinhunt.buggyrelay.generator.languages.LLVMIRProgramGenerator;
 import de.markushimmel.merlinhunt.buggyrelay.generator.languages.PythonBase64ProgramGenerator;
+import de.markushimmel.merlinhunt.buggyrelay.generator.languages.PythonRarePackageProgramGenerator;
+import de.markushimmel.merlinhunt.buggyrelay.generator.languages.RubyHuffmanProgramGenerator;
 import de.markushimmel.merlinhunt.buggyrelay.generator.languages.SQLiteProgramGenerator;
 
 @ApplicationScoped
@@ -26,29 +28,28 @@ public class FullProgramGenerator {
     @PostConstruct
     void setUp() {
         allGenerators = List.of( //
+                sqliteGenerator, //
+
+                new RubyHuffmanProgramGenerator(), //
                 new LLVMIRProgramGenerator(), //
 
+                new CPlusPlusProgramGenerator(), //
                 new BrainfuckProgramGenerator(), //
-                new CPlusPlusProgramGenerator(), //
-
-                new PythonBase64ProgramGenerator(), //
                 new HaskellRSAProgramGenerator(), //
-                new PythonBase64ProgramGenerator(), //
-                new CPlusPlusProgramGenerator(), //
+                new PythonRarePackageProgramGenerator(), //
 
-                new FullyEscapedJavaProgramGenerator(), //
+                new PythonBase64ProgramGenerator(), //
                 new JavaProgramGenerator(), //
-                new CPlusPlusProgramGenerator(), //
-                new JavaProgramGenerator(), //
-                new CPlusPlusProgramGenerator(), //
-                new CPlusPlusProgramGenerator(), //
-                new CPlusPlusProgramGenerator(), //
-                new CPlusPlusProgramGenerator() //
+                new FullyEscapedJavaProgramGenerator() //
         );
     }
 
-    private static final List<String> LEAVES = List.of("I", "n", "c", "o", "m", "p", "r", "e", "h", "e", "n", "s", "i",
-            "b", "l", "e");
+    private static final List<String> LEAVES = List.of(
+            "Solution code is concatenation of all words in the correct order with single space in between",
+            "Indispensability", "Noncomprehensive",
+            "Procrastinations",
+            "Thermoelectrical", "Incomprehensible", "Inconclusiveness", "Internationalize", "Irresponsibility",
+            "Journalistically", "Mispronunciation");
 
     public String generateFinalProgram(boolean errors) {
         return get(0, errors);

@@ -8,7 +8,7 @@ docker: server
 	docker push markushimmel.de:5000/merlinhunt/$(CONTAINERNAME)
 
 server-native:
-	 ./mvnw package -Pnative -Dquarkus.native.container-build=true
+	 ./mvnw package -Pnative -Dquarkus.native.container-build=true -Dquarkus.native.builder-image=quay.io/quarkus/ubi-quarkus-graalvmce-builder-image:22.3-java19 -Dquarkus.native.additional-build-args=-J--enable-preview
 
 docker-native: server-native
 	docker build -f src/main/docker/Dockerfile.native-micro -t markushimmel.de:5000/merlinhunt/$(CONTAINERNAME) .
