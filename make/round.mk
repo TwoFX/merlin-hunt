@@ -34,7 +34,7 @@ dj-contest/data/sample/1.ans: $(FLAGNAME).flag.dj dj-contest/data/sample
 	cp $< $@
 
 dj-contest/domjudge-problem.ini: dj-contest
-	printf "name = $(PROBLEMNAME)" > $@
+	printf "name = $(PROBLEMNAME)\\nspecial_compare = flagcompare\\n" > $@
 
 $(SHORTNAME).zip: dj-contest/domjudge-problem.ini dj-contest/data/sample/1.in dj-contest/data/sample/1.ans
 	(cd dj-contest && zip ../$@ `printf "$^" | sed "s/dj-contest\\///g" -`)
