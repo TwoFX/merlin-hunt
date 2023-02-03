@@ -2,6 +2,7 @@ PROBLEMNAME := Access Granted
 FLAGNAME := accessgranted
 SHORTNAME := A
 INPUTFILES := input/README.txt input/request-hint.flag
+STARTPROBLEM := Yes
 
 include ../../make/round.mk
 

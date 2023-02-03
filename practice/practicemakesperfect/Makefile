@@ -2,6 +2,7 @@ PROBLEMNAME := Practice Makes Perfect
 FLAGNAME := practicemakesperfect
 SHORTNAME := A
 INPUTFILES := input/README.txt input/request-hint.flag
+STARTPROBLEM := Yes
 
 include ../../make/round.mk
 

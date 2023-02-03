@@ -38,6 +38,10 @@ dj-contest/domjudge-problem.ini: dj-contest
 
 $(SHORTNAME).zip: dj-contest/domjudge-problem.ini dj-contest/data/sample/1.in dj-contest/data/sample/1.ans
 	(cd dj-contest && zip ../$@ `printf "$^" | sed "s/dj-contest\\///g" -`)
+ifneq ($(STARTPROBLEM),)
+	cp $(FLAGNAME).ans dj-contest/problem.txt
+	zip -j $@ dj-contest/problem.txt
+endif
 
 clean::
 	rm -rf dj-contest $(FLAGNAME).flag $(SHORTNAME).zip $(FLAGNAME).zip $(FLAGNAME).flag.in input/$(FLAGNAME) $(FLAGNAME).flag.dj
