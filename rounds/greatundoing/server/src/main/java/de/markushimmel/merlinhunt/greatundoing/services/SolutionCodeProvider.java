@@ -17,7 +17,7 @@ import io.quarkus.runtime.Startup;
 @ApplicationScoped
 public class SolutionCodeProvider {
 
-    private static final String SOLUTION_CODE_FALLBACK = "Oh no, the puzzle is broken!";
+    private static final String SOLUTION_CODE_FALLBACK = "It's not that easy ;)";
 
     @ConfigProperty(name = "greatundoing.solution.code.file")
     Optional<String> solutionCodeFile;
