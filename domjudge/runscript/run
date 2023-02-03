@@ -6,7 +6,7 @@ SOLUTION=$(cat "$@")
 
 cat > "$DEST" <<EOF
 #!/bin/sh
-printf "$SOLUTION\\n"
+printf "$SOLUTION\\n" | sha256sum
 EOF
 
 chmod a+x "$DEST"
