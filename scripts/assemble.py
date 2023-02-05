@@ -8,6 +8,8 @@ To unlock the next puzzle:
 * Click on the "Correct" verdict in the submissions list.
 * In the dialog that opens, look for the "Diff output" section.
 * Unlock the encrypted zip file with the passphrase given there.
+
+For more details, see https://youtu.be/O9AIA9cQNfE
 '''
 
 readme_message_done = '''Congratulations on completing the puzzle hunt!
