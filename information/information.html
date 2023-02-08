@@ -75,22 +75,21 @@ sign up as early as possible.</p>
 with other individuals who are looking for a team.</p>
 
 <h2>Competition format</h2>
-<p>The puzzle hunt is structured as an ordered series of tasks. A task is a
-zip file containing the following things:</p>
-<ul>
-	<li>The <i>flag</i> of the previous task: a file with the extension
-		<code>.flag</code> that you should upload to DOMJudge (see below) to obtain
-		points for the previous problem.</li>
-	<li>One or more files that make up the puzzle that you have to solve for this
-		task.</li>
-	<li>The next task, as an encrypted zip file with extension <code>.zip.gpg</code>.
-		The solution of the task is the passphrase needed to decrypt the next task.</li>
-</ul>
+<p> The puzzle hunt is contained in a single zip file. In the zip file, you will
+find the first puzzle as well as an encrypted zip file containing the remaining
+tasks. Using the solution of the first puzzle, you can decrypt the zip file,
+giving you access to the second task as well as an encrypted zip file containing
+the remaining tasks. This goes on until you have solved all puzzles.</p>
 
 <p>The initial zip file containing the first task will be distributed via Discord
-shortly before the contest. The password to decrypt the task will be
-distributed via Discord as soon as the contest starts. You should download the
-initial zip file in advance as it will be quite large.</p>
+shortly before the contest. You should download the
+initial zip file in advance as it is relatively large (750-800 MB).</p>
+
+<h3>Explanation video</h3>
+<p>Please watch the following video to understand how participating in the contest works:</p>
+<blockquote>
+	<a href="https://www.youtube.com/watch?v=O9AIA9cQNfE">Merlin Hunt Demonstration</a>.
+</blockquote>
 
 <h3>DOMJudge</h3>
 <p>Each team's progress is tracked via an online system called DOMJudge. The URL of
@@ -99,10 +98,6 @@ the DOMJudge system is</p>
 	<a href="https://domjudge.markushimmel.de/">https://domjudge.markushimmel.de/</a>.
 </blockquote>
 
-<p>As soon as you successfully decrypt a zip file, you should upload the flag
-contained in the archive to DOMJudge in order to obtain points for the task you
-just solved.</p>
-
 <p>You will obtain credentials for DOMJudge after signing up. The same credentials
 will work for the practice session and the main contest.</p>
 
@@ -110,30 +105,6 @@ will work for the practice session and the main contest.</p>
 The teams will be sorted using ICPC scoring rules, which basically means that
 to appear at the top of the leaderboard, you should solve many puzzles and do
 so quickly and with few hints.</p>
-
-<h3>Example</h3>
-<p>Here is an example of how the process of participating in the puzzle hunt looks.
-You will be able to practice the process during the practice session; see below.</p>
-
-<ul>
-	<li>Before the contest, you download the first task. It is a zip file called
-		<code>gettingstarted.zip</code>. Inside the zip archive, there are two files:
-		<code>README.md</code> and <code>thefirsttask.zip.gpg</code>. The readme file tells
-		you that you will receive the password to decrypt the encrypted file once
-		the contest has started.</li>
-	<li>As soon as the contest starts, the password for <code>thefirsttask.zip.gpg</code>
-		is announced on Discord. You decrypt the archive and find three files inside:
-		<code>gettingstarted.flag</code>, <code>puzzle.txt</code> and <code>thesecondtask.zip.gpg</code>.</li>
-	<li>You upload <code>gettingstarted.flag</code> to DOMJudge and receive one point.</li>
-	<li>You solve the puzzle contained in <code>puzzle.txt</code>. The solution is the
-		sentence &ldquo;Elephants are larger than pixels&rdquo;.</li>
-	<li>You use this phrase to decrypt <code>thesecondtask.zip.gpg</code> and find
-		four files inside the archive: <code>thefirsttask.flag</code>, <code>secondpuzzle.txt</code>,
-		<code>secondpuzzle.jpg</code> and <code>thethirdtask.zip.gpg</code>.</li>
-	<li>You upload <code>thefirsttask.flag</code> to DOMJudge and receive one point.</li>
-	<li>You solve the puzzle contained in <code>secondpuzzle.*</code>, use this to decrypt the
-		next problem archive, upload the flag, solve the next puzzle, and so on.</li>
-</ul>
 
 <h3>Hints</h3>
 <p>If you get stuck on a puzzle, it is possible to request a hint. You may only
