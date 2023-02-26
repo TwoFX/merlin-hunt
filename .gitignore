@@ -3,6 +3,8 @@ dj-contest/
 *.flag.in
 *.flag.dj
 target/
+*.flac
+*.ppm
 
 # Created by https://www.toptal.com/developers/gitignore/api/linux,vim,java,c++,windows,latex,haskell
 # Edit at https://www.toptal.com/developers/gitignore?templates=linux,vim,java,c++,windows,latex,haskell
